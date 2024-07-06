@@ -1,0 +1,11 @@
+C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\model\bin\Debug\net8.0-windows\model.deps.json
+C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\model\bin\Debug\net8.0-windows\model.dll
+C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\model\bin\Debug\net8.0-windows\model.pdb
+C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\model\obj\Debug\net8.0-windows\model.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\model\obj\Debug\net8.0-windows\model.AssemblyInfoInputs.cache
+C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\model\obj\Debug\net8.0-windows\model.AssemblyInfo.cs
+C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\model\obj\Debug\net8.0-windows\model.csproj.CoreCompileInputs.cache
+C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\model\obj\Debug\net8.0-windows\model.dll
+C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\model\obj\Debug\net8.0-windows\refint\model.dll
+C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\model\obj\Debug\net8.0-windows\model.pdb
+C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\model\obj\Debug\net8.0-windows\ref\model.dll
