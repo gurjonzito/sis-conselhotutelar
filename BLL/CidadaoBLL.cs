@@ -8,6 +8,7 @@ namespace BLL
     public class CidadaoBLL
     {
         private CidadaoDAL cidadaoDAL = new CidadaoDAL();
+        private FamiliaBLL familiaBLL = new FamiliaBLL();
 
         public string CadastrarCidadao(Cidadao cidadao)
         {
@@ -57,6 +58,12 @@ namespace BLL
             cidadaoDAL.AtualizarCidadao(cidadao);
             return "Sucesso";
         }
+
+        public List<Cidadao> GetCidadaosComFamilia()
+        {
+            return cidadaoDAL.GetCidadaosComFamilia();
+        }
+
 
         public List<Cidadao> GetCidadaos()
         {

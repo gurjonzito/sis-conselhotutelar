@@ -2,12 +2,6 @@
 using model;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UI
@@ -16,7 +10,6 @@ namespace UI
     {
         private CidadaoBLL cidadaoBLL = new CidadaoBLL();
         private FamiliaBLL familiaBLL = new FamiliaBLL();
-        private List<Cidadao> cidadaos = new List<Cidadao>();
         private List<Familia> familias = new List<Familia>();
 
         public frmCadCidadao()
@@ -28,12 +21,11 @@ namespace UI
         private void CarregarFamilias()
         {
             familias = familiaBLL.ObterFamilias();
-
             if (familias != null && familias.Count > 0)
             {
                 cboxFamiliaCidadao.DataSource = familias;
-                cboxFamiliaCidadao.DisplayMember = "Sobrenome"; // Substituir "NomeFamilia" pela propriedade correta na classe Familia
-                cboxFamiliaCidadao.ValueMember = "Id"; // Substituir "Id" pela propriedade correta na classe Familia que representa o ID da família
+                cboxFamiliaCidadao.DisplayMember = "Sobrenome";
+                cboxFamiliaCidadao.ValueMember = "Id";
             }
             else
             {
@@ -83,7 +75,8 @@ namespace UI
             // Atribuir IdFamiliaCidadao se houver um valor selecionado na ComboBox
             if (cboxFamiliaCidadao.SelectedIndex != -1)
             {
-                cidadao.IdFamiliaCidadao = cboxFamiliaCidadao.SelectedValue == null ? (int?)null : (int)cboxFamiliaCidadao.SelectedValue;
+                // Certifique-se de que o valor é convertido corretamente para int
+                cidadao.IdFamiliaCidadao = (int?)cboxFamiliaCidadao.SelectedValue;
             }
             else
             {
@@ -94,19 +87,19 @@ namespace UI
 
             if (!string.IsNullOrEmpty(txtID.Text))
             {
-                // Atualizar usuário
+                // Atualizar cidadão
                 retorno = cidadaoBLL.UpdateCidadao(cidadao);
             }
             else
             {
-                // Verificar se o usuário já existe
+                // Verificar se o cidadão já existe
                 if (cidadaoBLL.VerificarCidadao(cidadao.IdCidadao) == "Cidadão existente")
                 {
                     MessageBox.Show("O cidadão já existe no banco de dados.");
                     return;
                 }
 
-                // Inserir novo usuário
+                // Inserir novo cidadão
                 retorno = cidadaoBLL.CadastrarCidadao(cidadao);
             }
 

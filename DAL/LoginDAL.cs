@@ -53,4 +53,24 @@ public class LoginDAL
         }
         return senhaExists;
     }
+
+    public int ObterTipoUsuario(string username)
+    {
+        using (MySqlConnection connection = mConn.AbrirConexao())
+        {
+            string query = "SELECT IdCargo FROM tb_colaborador WHERE Username = @Username";
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@Username", username);
+
+            object result = command.ExecuteScalar();
+            if (result != null)
+            {
+                return Convert.ToInt32(result);
+            }
+            else
+            {
+                return 0; // Outro tipo ou inválido
+            }
+        }
+    }
 }

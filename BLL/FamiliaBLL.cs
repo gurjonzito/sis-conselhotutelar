@@ -8,6 +8,12 @@ namespace BLL
     {
         private FamiliaDAL familiaDAL = new FamiliaDAL();
 
+        public string CadastrarFamilia(Familia familia)
+        {
+            familiaDAL.InserirFamilia(familia); // Insere a nova família
+            return "Sucesso";
+        }
+
         public List<Familia> ObterFamilias()
         {
             return familiaDAL.ObterFamilias();

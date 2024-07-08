@@ -16,15 +16,35 @@ namespace UI
 {
     public partial class frmPrincipal : Form
     {
-        public ColaboradorBLL colaboradorBLL = new ColaboradorBLL();
+
+        public int UserChamado { get; set; }
+        public string User { get; set; }
+
         public frmPrincipal()
         {
             InitializeComponent();
+
+            int userChamado = Program.UserChamado;
+            string user = Program.User;
+
+            if (userChamado == 2)
+            {
+                // Código para administradores
+                toolStripNovo.Enabled = true;
+                toolStripCad.Enabled = true;
+                toolStripEditarColab.Enabled = true;
+            }
+            else if (userChamado == 1)
+            {
+                // Código para Conselheiro
+                toolStripNovo.Enabled = true;
+                toolStripCad.Enabled = false;
+                toolStripEditarColab.Enabled = false;
+            }
         }
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
-            
         }
 
         private void toolStripPermissoes_Click(object sender, EventArgs e)
@@ -61,6 +81,12 @@ namespace UI
         {
             UI.frmCadCidadao frmCadCidadao = new UI.frmCadCidadao();
             frmCadCidadao.ShowDialog();
+        }
+
+        private void toolStripFamilia_Click(object sender, EventArgs e)
+        {
+            UI.frmCadFamilia frmCadFamilia = new UI.frmCadFamilia();
+            frmCadFamilia.ShowDialog();
         }
 
         private void toolStripSair_Click(object sender, EventArgs e)

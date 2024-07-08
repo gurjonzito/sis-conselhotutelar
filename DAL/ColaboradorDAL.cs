@@ -138,9 +138,6 @@ namespace DAL
             return colaboradores;
         }
 
-
-
-
         public bool VerificarNome(string nomeColab)
         {
             bool nomeExists = false;

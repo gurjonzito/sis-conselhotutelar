@@ -8,6 +8,24 @@ namespace DAL
     public class FamiliaDAL
     {
         ConexaoDB mConn = new ConexaoDB();
+        string sql;
+        MySqlCommand cmd;
+
+        public void InserirFamilia(Familia familia)
+        {
+            // Inserir o novo cidadão na tabela tb_clientes
+            sql = "INSERT INTO tb_familias (Sobrenome, Responsavel, Participantes) VALUES (@Sobrenome, @Responsavel, @Participantes)";
+            cmd = new MySqlCommand(sql, mConn.AbrirConexao());
+
+            cmd.Parameters.AddWithValue("@Sobrenome", familia.Sobrenome);
+            cmd.Parameters.AddWithValue("@Responsavel", familia.Responsavel);
+            cmd.Parameters.AddWithValue("@Participantes", familia.Participantes);
+
+            cmd.ExecuteNonQuery();
+
+            // Fechar a conexão após a execução
+            mConn.FecharConexao();
+        }
 
         public List<Familia> ObterFamilias()
         {

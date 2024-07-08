@@ -38,7 +38,12 @@ namespace BLL
             {
                 return "Senha incorreta";
             }
+        }
 
+        public int ObterTipoUsuario(string username)
+        {
+            LoginDAL loginDAL = new LoginDAL();
+            return loginDAL.ObterTipoUsuario(username);
         }
     }
 }

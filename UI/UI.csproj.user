@@ -8,6 +8,9 @@
     <Compile Update="frmCadCidadao.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="frmCadFamilia.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="frmCadUser.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -10,6 +10,7 @@ namespace model
         public int IdCidadao { get; set; }
         public int IdadeCidadao { get; set; }
         public int? IdFamiliaCidadao { get; set; }
+        public string NomeFamilia { get; set; } // Adicione esta linha
 
 
         public string NomeCidadao

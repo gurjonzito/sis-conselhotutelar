@@ -16,7 +16,7 @@ namespace DAL
         public void InserirCidadao(Cidadao cidadao)
         {
             // Inserir o novo cidadão na tabela tb_clientes
-            sql = "INSERT INTO tb_clientes (Nome, Idade, Telefone, Email) VALUES (@NomeCidadao, @IdadeCidadao, @TelefoneCidadao, @EmailCidadao)";
+            sql = "INSERT INTO tb_clientes (Nome, Idade, Telefone, Email, IdFamilia) VALUES (@NomeCidadao, @IdadeCidadao, @TelefoneCidadao, @EmailCidadao, @IdFamiliaCidadao)";
             cmd = new MySqlCommand(sql, mConn.AbrirConexao());
 
             cmd.Parameters.AddWithValue("@NomeCidadao", cidadao.nomeCidadao);
@@ -32,6 +32,8 @@ namespace DAL
             {
                 cmd.Parameters.AddWithValue("@EmailCidadao", cidadao.emailCidadao);
             }
+
+            cmd.Parameters.AddWithValue("@IdFamiliaCidadao", cidadao.IdFamiliaCidadao);
 
             cmd.ExecuteNonQuery();
 
@@ -97,6 +99,42 @@ namespace DAL
             return idFamilia;
         }
 
+        public List<Cidadao> GetCidadaosComFamilia()
+        {
+            List<Cidadao> cidadaos = new List<Cidadao>();
+
+            using (MySqlConnection connection = mConn.AbrirConexao())
+            {
+                string query = "SELECT c.Id, c.Nome, c.Idade, c.Telefone, c.Email, f.Sobrenome AS NomeFamilia " +
+                               "FROM tb_clientes c " +
+                               "INNER JOIN tb_familias f ON c.IdFamilia = f.Id";
+
+                using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                {
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Cidadao cidadao = new Cidadao
+                            {
+                                IdCidadao = reader.GetInt32("Id"),
+                                NomeCidadao = reader["Nome"].ToString(),
+                                IdadeCidadao = reader.GetInt32("Idade"),
+                                TelefoneCidadao = reader["Telefone"].ToString(),
+                                EmailCidadao = reader.IsDBNull(reader.GetOrdinal("Email")) ? string.Empty : reader["Email"].ToString(),
+                                NomeFamilia = reader["NomeFamilia"].ToString()
+                            };
+
+                            cidadaos.Add(cidadao);
+                        }
+                    }
+                }
+            }
+
+            return cidadaos;
+        }
+
+
         public void AtualizarCidadao(Cidadao cidadao)
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
@@ -110,7 +148,7 @@ namespace DAL
         {
             using (IDbConnection dbConnection = mConn.AbrirConexao())
             {
-                string query = "SELECT Id, Nome, Idade, Telefone, Email FROM tb_clientes";
+                string query = "SELECT Id, Nome, Idade, Telefone, Email, IdFamilia FROM tb_clientes";
                 return dbConnection.Query<Cidadao>(query).AsList();
             }
         }

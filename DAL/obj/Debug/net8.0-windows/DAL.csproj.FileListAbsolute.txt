@@ -8,9 +8,9 @@ C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\DAL\obj\Debug\net8.0-windo
 C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\DAL\obj\Debug\net8.0-windows\DAL.AssemblyInfoInputs.cache
 C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\DAL\obj\Debug\net8.0-windows\DAL.AssemblyInfo.cs
 C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\DAL\obj\Debug\net8.0-windows\DAL.csproj.CoreCompileInputs.cache
+C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\DAL\obj\Debug\net8.0-windows\DAL.sourcelink.json
 C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\DAL\obj\Debug\net8.0-windows\DAL.csproj.Up2Date
 C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\DAL\obj\Debug\net8.0-windows\DAL.dll
 C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\DAL\obj\Debug\net8.0-windows\refint\DAL.dll
 C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\DAL\obj\Debug\net8.0-windows\DAL.pdb
 C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\DAL\obj\Debug\net8.0-windows\ref\DAL.dll
-C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\DAL\obj\Debug\net8.0-windows\DAL.sourcelink.json

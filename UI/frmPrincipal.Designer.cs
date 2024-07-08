@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             toolStripPrincipal = new ToolStrip();
-            toolStripDropDownButton1 = new ToolStripDropDownButton();
+            toolStripNovo = new ToolStripDropDownButton();
             toolStripAtendimento = new ToolStripMenuItem();
             toolStripCaso = new ToolStripMenuItem();
             toolStripCidadao = new ToolStripMenuItem();
@@ -61,46 +61,47 @@
             // toolStripPrincipal
             // 
             toolStripPrincipal.ImageScalingSize = new Size(20, 20);
-            toolStripPrincipal.Items.AddRange(new ToolStripItem[] { toolStripDropDownButton1, toolStripCad, toolStripSeparator2, toolStripView, toolStripSeparator3, toolStripRelatorio, toolStripSair, toolStripSeparator1, toolStripEditar, toolStripSeparator4, toolStripOpcoes });
+            toolStripPrincipal.Items.AddRange(new ToolStripItem[] { toolStripNovo, toolStripCad, toolStripSeparator2, toolStripView, toolStripSeparator3, toolStripRelatorio, toolStripSair, toolStripSeparator1, toolStripEditar, toolStripSeparator4, toolStripOpcoes });
             toolStripPrincipal.Location = new Point(0, 0);
             toolStripPrincipal.Name = "toolStripPrincipal";
             toolStripPrincipal.Size = new Size(1065, 30);
             toolStripPrincipal.TabIndex = 0;
             toolStripPrincipal.Text = "toolStrip1";
             // 
-            // toolStripDropDownButton1
+            // toolStripNovo
             // 
-            toolStripDropDownButton1.DropDownItems.AddRange(new ToolStripItem[] { toolStripAtendimento, toolStripCaso, toolStripCidadao, toolStripFamilia });
-            toolStripDropDownButton1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            toolStripDropDownButton1.Size = new Size(65, 27);
-            toolStripDropDownButton1.Text = "Novo";
+            toolStripNovo.DropDownItems.AddRange(new ToolStripItem[] { toolStripAtendimento, toolStripCaso, toolStripCidadao, toolStripFamilia });
+            toolStripNovo.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            toolStripNovo.Name = "toolStripNovo";
+            toolStripNovo.Size = new Size(65, 27);
+            toolStripNovo.Text = "Novo";
             // 
             // toolStripAtendimento
             // 
             toolStripAtendimento.Name = "toolStripAtendimento";
-            toolStripAtendimento.Size = new Size(194, 28);
+            toolStripAtendimento.Size = new Size(224, 28);
             toolStripAtendimento.Text = "Atendimento";
             toolStripAtendimento.Click += toolStripAtendimento_Click;
             // 
             // toolStripCaso
             // 
             toolStripCaso.Name = "toolStripCaso";
-            toolStripCaso.Size = new Size(194, 28);
+            toolStripCaso.Size = new Size(224, 28);
             toolStripCaso.Text = "Caso";
             // 
             // toolStripCidadao
             // 
             toolStripCidadao.Name = "toolStripCidadao";
-            toolStripCidadao.Size = new Size(194, 28);
+            toolStripCidadao.Size = new Size(224, 28);
             toolStripCidadao.Text = "Cidadão";
             toolStripCidadao.Click += toolStripCidadao_Click;
             // 
             // toolStripFamilia
             // 
             toolStripFamilia.Name = "toolStripFamilia";
-            toolStripFamilia.Size = new Size(194, 28);
+            toolStripFamilia.Size = new Size(224, 28);
             toolStripFamilia.Text = "Família";
+            toolStripFamilia.Click += toolStripFamilia_Click;
             // 
             // toolStripCad
             // 
@@ -287,7 +288,7 @@
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem senhaToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator4;
-        private ToolStripDropDownButton toolStripDropDownButton1;
+        private ToolStripDropDownButton toolStripNovo;
         private ToolStripMenuItem toolStripAtendimento;
         private ToolStripMenuItem toolStripCaso;
         private ToolStripMenuItem toolStripCidadao;
