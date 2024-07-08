@@ -13,3 +13,4 @@ C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\DAL\obj\Debug\net8.0-windo
 C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\DAL\obj\Debug\net8.0-windows\refint\DAL.dll
 C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\DAL\obj\Debug\net8.0-windows\DAL.pdb
 C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\DAL\obj\Debug\net8.0-windows\ref\DAL.dll
+C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\DAL\obj\Debug\net8.0-windows\DAL.sourcelink.json

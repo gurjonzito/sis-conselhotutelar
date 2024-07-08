@@ -163,7 +163,9 @@
             Controls.Add(txtCaminhoRelatorio);
             Controls.Add(btnSalvarRelatorio);
             Controls.Add(panel1);
+            MaximizeBox = false;
             Name = "frmGerarRelatorio";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmGerarRelatorio";
             Load += frmGerarRelatorio_Load;
             panel1.ResumeLayout(false);

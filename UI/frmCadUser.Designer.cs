@@ -111,7 +111,7 @@
             btnAplicarUser.BackColor = Color.RoyalBlue;
             btnAplicarUser.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAplicarUser.ForeColor = SystemColors.Window;
-            btnAplicarUser.Location = new Point(268, 436);
+            btnAplicarUser.Location = new Point(268, 445);
             btnAplicarUser.Name = "btnAplicarUser";
             btnAplicarUser.Size = new Size(110, 40);
             btnAplicarUser.TabIndex = 9;
@@ -124,7 +124,7 @@
             btnLimparUser.BackColor = Color.RoyalBlue;
             btnLimparUser.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLimparUser.ForeColor = SystemColors.Window;
-            btnLimparUser.Location = new Point(54, 436);
+            btnLimparUser.Location = new Point(54, 445);
             btnLimparUser.Name = "btnLimparUser";
             btnLimparUser.Size = new Size(109, 40);
             btnLimparUser.TabIndex = 8;
@@ -168,7 +168,7 @@
             // 
             // txtID
             // 
-            txtID.Location = new Point(193, 444);
+            txtID.Location = new Point(193, 453);
             txtID.Margin = new Padding(2);
             txtID.Name = "txtID";
             txtID.Size = new Size(43, 27);
@@ -306,7 +306,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(440, 513);
+            ClientSize = new Size(440, 519);
             Controls.Add(label10);
             Controls.Add(label9);
             Controls.Add(label8);
@@ -331,7 +331,9 @@
             Controls.Add(lblUsernameUser);
             Controls.Add(txtNomeUser);
             Controls.Add(lblNomeUser);
+            MaximizeBox = false;
             Name = "frmCadUser";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmCadUser";
             panelNewUser.ResumeLayout(false);
             panelNewUser.PerformLayout();

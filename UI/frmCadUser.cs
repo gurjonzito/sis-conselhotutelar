@@ -19,7 +19,7 @@ namespace UI
             InitializeComponent();
         }
 
-        public void SetUsuario(Usuario usuario)
+    public void SetUsuario(Usuario usuario)
         {
             usuarioLogado = usuario;
             if (usuario != null)
@@ -35,6 +35,38 @@ namespace UI
             }
         }
 
+        Dictionary<string, int> niveisAcesso = new Dictionary<string, int>
+        {
+            { "Administrador", 2 },
+            { "Conselheiro", 1 }
+        };
+
+        public int ObterIdCargo(string cargoTexto)
+        {
+            if (string.IsNullOrWhiteSpace(cargoTexto))
+            {
+                throw new CargoInvalidoException("Cargo não pode ser vazio.");
+            }
+
+            if (niveisAcesso.TryGetValue(cargoTexto, out int idCargo))
+            {
+                return idCargo;
+            }
+            else
+            {
+                throw new CargoInvalidoException("Cargo não reconhecido.");
+            }
+        }
+
+        // Exceção personalizada para cargos inválidos
+        public class CargoInvalidoException : Exception
+        {
+            public CargoInvalidoException(string message) : base(message)
+            {
+            }
+        }
+
+
         private void btnAplicarUser_Click(object sender, EventArgs e)
         {
             Usuario usuario = new Usuario();
@@ -46,11 +78,24 @@ namespace UI
             usuario.usuario = txtUsernameUser.Text.Trim();
             usuario.email = txtEmailUser.Text.Trim();
             usuario.telefone = txtTelefoneUser.Text.Trim();
-            usuario.id_cargo = Convert.ToInt32(cboxCargoUser.Text.Trim());
+            
+
 
             if (string.IsNullOrWhiteSpace(usuario.nome))
             {
-                MessageBox.Show("Nome deve ser preenchido.");
+                MessageBox.Show("Nome não pode ser vazio.");
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(usuario.usuario))
+            {
+                MessageBox.Show("Usuário não pode ser vazio.");
+                return;
+            }
+
+                if (string.IsNullOrWhiteSpace(usuario.email))
+            {
+                MessageBox.Show("E-mail não pode ser vazio.");
                 return;
             }
 
@@ -76,7 +121,7 @@ namespace UI
             {
                 if (string.IsNullOrWhiteSpace(txtSenhaUser.Text) || string.IsNullOrWhiteSpace(txtConfirmSenhaUser.Text))
                 {
-                    MessageBox.Show("Senha e confirmação de senha devem ser preenchidas.");
+                    MessageBox.Show("Senha e confirmação de senha não podem ser vazias.");
                     return;
                 }
 
@@ -87,6 +132,16 @@ namespace UI
                 }
 
                 usuario.senha = BCrypt.Net.BCrypt.HashPassword(txtSenhaUser.Text);
+            }
+
+            try
+            {
+                usuario.id_cargo = ObterIdCargo(cboxCargoUser.Text.Trim());
+            }
+            catch (CargoInvalidoException ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             string retorno;

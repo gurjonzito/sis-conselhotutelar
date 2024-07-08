@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using BLL;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace UI
 {
@@ -11,31 +12,39 @@ namespace UI
         public frmLogin()
         {
             InitializeComponent();
+            loginBLL = new LoginBLL();
         }
+
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            string username = txtUser.Text;
+            string username = txtUser.Text.Trim();
             string senha = txtSenha.Text;
 
-            Login login = new Login
-            {
-                Username = username,
-                Senha = senha
-            };
+            // Validar o username
+            string validarUser = loginBLL.ValidarUser(username);
 
-            bool isValid = loginBLL.ValidarUsuarioSenha(login);
+            if (validarUser == "Email incorreto")
+            {
+                MessageBox.Show("Usuário incorreto.");
+                return;
+            }
 
-            if (isValid)
+            // Validar a senha
+            string validarSenha = loginBLL.ValidarSenha(senha);
+
+            if (validarSenha == "Senha incorreta")
             {
-                MessageBox.Show("Sucesso ao entrar!");
-                UI.frmPrincipal frmPrincipal = new UI.frmPrincipal();
-                frmPrincipal.ShowDialog();
+                MessageBox.Show("Senha incorreta.");
+                return;
             }
-            else
-            {
-                MessageBox.Show("Usuário ou senha incorretos.");
-            }
+
+            // Se ambos são válidos, login bem-sucedido
+            MessageBox.Show("Sucesso ao entrar!");
+            frmPrincipal telaPrincipal = new frmPrincipal();
+            telaPrincipal.Closed += (s, args) => this.Close(); // Fecha o aplicativo quando a tela principal for fechada
+            telaPrincipal.Show();
+
         }
     }
 }

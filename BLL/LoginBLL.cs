@@ -1,28 +1,44 @@
-﻿using model;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using DAL;
+using model;
 
-public class LoginBLL
+namespace BLL
 {
-    private LoginDAL loginDAL;
-
-    public LoginBLL()
+    public class LoginBLL
     {
-        loginDAL = new LoginDAL();
-    }
-
-    public bool ValidarUsuarioSenha(Login login)
-    {
-        if (string.IsNullOrEmpty(login.Username) || string.IsNullOrEmpty(login.Senha))
+        public string ValidarUser(string validarUser)
         {
-            return false;
+            LoginDAL loginDAL = new LoginDAL();
+            bool userExists = loginDAL.ValidarUserLogin(validarUser);
+
+            if (userExists)
+            {
+                return "Email correto";
+            }
+            else
+            {
+                return "Email incorreto";
+            }
         }
-
-        string senhaHash = loginDAL.ObterSenhaHash(login.Username);
-
-        if (senhaHash == null)
+        public string ValidarSenha(string validarSenha)
         {
-            return false;
-        }
 
-        return BCrypt.Net.BCrypt.Verify(login.Senha, senhaHash);
+            LoginDAL loginDAL = new LoginDAL();
+            bool senhaExists = loginDAL.ValidarSenhaLogin(validarSenha);
+
+            if (senhaExists)
+            {
+                return "Senha correta";
+            }
+            else
+            {
+                return "Senha incorreta";
+            }
+
+        }
     }
 }

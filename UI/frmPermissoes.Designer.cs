@@ -133,7 +133,9 @@
             Controls.Add(lblUserPermissao);
             Controls.Add(lstPermissaoExist);
             Controls.Add(cboxUserPermissao);
+            MaximizeBox = false;
             Name = "frmPermissoes";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmPermissoes";
             Load += frmPermissoes_Load;
             ResumeLayout(false);

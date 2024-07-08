@@ -276,7 +276,9 @@
             Controls.Add(dataGridColaborador);
             Controls.Add(dataGridCidadao);
             Controls.Add(panelVerCadastrados);
+            MaximizeBox = false;
             Name = "frmVerCadastrados";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmVerCadastrados";
             Load += frmVerCadastrados_Load;
             panelVerCadastrados.ResumeLayout(false);

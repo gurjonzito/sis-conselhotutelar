@@ -9,3 +9,4 @@ C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\model\obj\Debug\net8.0-win
 C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\model\obj\Debug\net8.0-windows\refint\model.dll
 C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\model\obj\Debug\net8.0-windows\model.pdb
 C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\model\obj\Debug\net8.0-windows\ref\model.dll
+C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\model\obj\Debug\net8.0-windows\model.sourcelink.json

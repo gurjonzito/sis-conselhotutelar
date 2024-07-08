@@ -1,146 +1,172 @@
-﻿using Dapper;
-using model;
-using MySql.Data.MySqlClient;
-using System;
-using System.Collections;
+﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Common;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
+using DAL;
+using model;
 
-namespace DAL
+public class AtendimentoDAL
 {
-    public class AtendimentoDAL
+    ConexaoDB mConn = new ConexaoDB();
+
+    public bool InserirAtendimento(Atendimento atendimento)
     {
-        ConexaoDB mConn = new ConexaoDB();
-        string sql;
-        MySqlCommand cmd;
+        bool sucesso = false;
 
-        public void InserirAtendimento(Atendimento atendimento, string emailUsuarioLogado)
+        using (MySqlConnection conn = mConn.AbrirConexao())
         {
+            string query = @"INSERT INTO tb_atendimentos 
+                            (Codigo, DataAtendimento, StatusAtendimento, IdCliente, IdAtendente) 
+                            VALUES (@Codigo, @DataAtendimento, @StatusAtendimento, @IdCliente, @IdAtendente)";
 
-            sql = "INSERT INTO tb_atendimentos(Codigo, IdCliente, IdAtendente) VALUES " +
-                    "(@Codigo, @IdCliente, @IdAtendente)";
-            cmd = new MySqlCommand(sql, mConn.AbrirConexao());
-
-            cmd.Parameters.AddWithValue("@codigo", atendimento.Codigo);
-            cmd.Parameters.AddWithValue("@idCliente", atendimento.idCliente);
-            cmd.Parameters.AddWithValue("@idAtendente", atendimento.idAtendente);
-
-            cmd.ExecuteNonQuery();
-            mConn.FecharConexao();
-
-            //Obtem o ID do equipamento cadastrado por último
-            int novoAtendimentoID = Convert.ToInt32(cmd.LastInsertedId);
-            // Inserir o registro de log na tabela tb_logs
-            /*DateTime dataHoraAcao = DateTime.Now;
-            string tipoOperacao = "Cadastro do atendimento";
-            string mensagem = $"{tipoOperacao}: {atendimento.Codigo}";
-
-            sql = "INSERT INTO tb_logs(IDUsuario, EmailUsuario, DataHoraAcao, TipoOperacao, Mensagem) VALUES (@IDUsuario, @EmailUsuario, @DataHoraAcao, @TipoOperacao, @Mensagem)";
-            cmd = new MySqlCommand(sql, mConn.AbrirConexao());
-
-            cmd.Parameters.AddWithValue("@IDUsuario", novoAtendimentoID);
-            cmd.Parameters.AddWithValue("@EmailUsuario", emailUsuarioLogado);
-            cmd.Parameters.AddWithValue("@DataHoraAcao", dataHoraAcao);
-            cmd.Parameters.AddWithValue("@TipoOperacao", tipoOperacao);
-            cmd.Parameters.AddWithValue("@Mensagem", mensagem);
-
-            cmd.ExecuteNonQuery();
-            mConn.FecharConexao();*/
-        }
-
-        public bool VerificarCodigo(String verifcodigo)
-        {
-            bool codigoExists = false;
-            string sql = "SELECT COUNT(*) FROM tb_atendimentos WHERE Codigo = @codigo";
-
-            using (MySqlConnection connection = mConn.AbrirConexao())
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
-                using (MySqlCommand command = new MySqlCommand(sql, connection))
-                {
-                    command.Parameters.AddWithValue("@codigo", verifcodigo);
-                    int count = Convert.ToInt32(command.ExecuteScalar());
+                cmd.Parameters.AddWithValue("@Codigo", atendimento.CodigoAtendimento);
+                cmd.Parameters.AddWithValue("@DataAtendimento", atendimento.DataAtendimento);
+                cmd.Parameters.AddWithValue("@StatusAtendimento", atendimento.StatusAtendimento);
+                cmd.Parameters.AddWithValue("@IdCliente", atendimento.IdCliente.HasValue ? (object)atendimento.IdCliente.Value : DBNull.Value);
+                cmd.Parameters.AddWithValue("@IdAtendente", atendimento.IdAtendente.HasValue ? (object)atendimento.IdAtendente.Value : DBNull.Value);
 
-                    if (count > 0)
-                    {
-                        codigoExists = true;
-                    }
-                }
+                int result = cmd.ExecuteNonQuery();
+                sucesso = result > 0;
             }
-            return codigoExists;
+
+            conn.Close();
         }
 
-        public List<Atendimento> GetAtendimentos()
+        return sucesso;
+    }
+
+    public List<string> ObterNomesClientes()
+    {
+        List<string> nomes = new List<string>();
+
+        using (MySqlConnection conn = mConn.AbrirConexao())
         {
-            using (IDbConnection dbConnection = mConn.AbrirConexao())
+            string query = "SELECT Nome FROM tb_clientes";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
-                return dbConnection.Query<Atendimento>("SELECT Id, Codigo, IdCliente, IdAtendente FROM tb_atendimentos").ToList();
-            }
-        }
-
-        /*public void UpdateAtendimentos(Atendimento atendimento, string emailUsuarioLogado)
-        {
-            using (IDbConnection dbConnection = mConn.AbrirConexao())
-            {
-
-                string query = "UPDATE tb_equipamentos SET Nome_Equipamento = @Nome, Valor = @Valor, Descricao = @Descricao  WHERE ID_equipamento = @ID_equipamento";
-                dbConnection.Execute(query, atendimento);
-
-                // Inserção de log
-                /*DateTime dataHoraAcao = DateTime.Now;
-                string tipoOperacao = "atualização de equipamento"; // Defina o tipo de operação conforme necessário
-
-                string sql = "INSERT INTO tb_logs(EmailUsuario, DataHoraAcao, TipoOperacao) VALUES (@EmailUsuario, @DataHoraAcao, @TipoOperacao)";
-                MySqlCommand cmd = new MySqlCommand(sql, mConn.AbrirConexao());
-
-                cmd.Parameters.AddWithValue("@EmailUsuario", emailUsuarioLogado);
-                cmd.Parameters.AddWithValue("@DataHoraAcao", dataHoraAcao);
-                cmd.Parameters.AddWithValue("@TipoOperacao", tipoOperacao);
-
-                cmd.ExecuteNonQuery();
-                mConn.FecharConexao();
-            }*/
-
-    public List<Atendimento> GetAtendimentosRelatorio()
-        {
-            using (IDbConnection dbConnection = mConn.AbrirConexao())
-            {
-
-                return dbConnection.Query<Atendimento>("SELECT Codigo FROM tb_atendimentos").ToList();
-            }
-        }
-
-        public List<Atendimento> ObterAtendimentosPorColaborador(int idColaborador)
-        {
-            List<Atendimento> atendimentos = new List<Atendimento>();
-
-            using (MySqlConnection connection = mConn.AbrirConexao())
-            {
-                string query = "SELECT * FROM tb_atendimentos WHERE idAtendente = @idColaborador";
-                MySqlCommand command = new MySqlCommand(query, connection);
-                command.Parameters.AddWithValue("@idColaborador", idColaborador);
-
-                using (MySqlDataReader reader = command.ExecuteReader())
+                using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        Atendimento atendimento = new Atendimento
-                        {
-                            idAtendimento = Convert.ToInt32(reader["Id"]),
-                            codigo = reader["Codigo"].ToString(),
-                            idCliente = reader["idCliente"].ToString(),
-                            idAtendente = reader["idAtendente"].ToString(),
-                            // Adicione outros campos conforme necessário
-                        };
-                        atendimentos.Add(atendimento);
+                        nomes.Add(reader["Nome"].ToString());
                     }
                 }
             }
 
-            return atendimentos;
+            conn.Close();
         }
+
+        return nomes;
+    }
+
+    public List<string> ObterNomesColaboradores()
+    {
+        List<string> nomes = new List<string>();
+
+        using (MySqlConnection conn = mConn.AbrirConexao())
+        {
+            string query = "SELECT Nome FROM tb_colaborador";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        nomes.Add(reader["Nome"].ToString());
+                    }
+                }
+            }
+
+            conn.Close();
+        }
+
+        return nomes;
+    }
+
+    public int ObterIdClientePorNome(string nomeCliente)
+    {
+        int idCliente = 0;
+
+        using (MySqlConnection conn = mConn.AbrirConexao())
+        {
+            string query = "SELECT Id FROM tb_clientes WHERE Nome = @Nome";
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@Nome", nomeCliente);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        idCliente = Convert.ToInt32(reader["Id"]);
+                    }
+                }
+            }
+
+            conn.Close();
+        }
+
+        return idCliente;
+    }
+
+    public int ObterIdColaboradorPorNome(string nomeColaborador)
+    {
+        int idColaborador = 0;
+
+        using (MySqlConnection conn = mConn.AbrirConexao())
+        {
+            string query = "SELECT Id FROM tb_colaborador WHERE Nome = @Nome";
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@Nome", nomeColaborador);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        idColaborador = Convert.ToInt32(reader["Id"]);
+                    }
+                }
+            }
+
+            conn.Close();
+        }
+
+        return idColaborador;
+    }
+
+
+    public List<Atendimento> ObterAtendimentosPorColaborador(int idColaborador)
+    {
+        List<Atendimento> atendimentos = new List<Atendimento>();
+
+        using (MySqlConnection connection = mConn.AbrirConexao())
+        {
+            string query = "SELECT * FROM tb_atendimentos WHERE IdAtendente = @idColaborador";
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@idColaborador", idColaborador);
+
+            using (MySqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Atendimento atendimento = new Atendimento
+                    {
+                        IdAtendimento = Convert.ToInt32(reader["Id"]),
+                        CodigoAtendimento = reader["Codigo"].ToString(),
+                        DataAtendimento = Convert.ToDateTime(reader["DataAtendimento"]),
+                        StatusAtendimento = reader["StatusAtendimento"].ToString(),
+                        IdCliente = reader["IdCliente"] != DBNull.Value ? Convert.ToInt32(reader["IdCliente"]) : (int?)null,
+                        IdAtendente = Convert.ToInt32(reader["IdAtendente"])
+                    };
+                    atendimentos.Add(atendimento);
+                }
+            }
+        }
+
+        return atendimentos;
     }
 }

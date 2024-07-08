@@ -8,30 +8,49 @@ public class LoginDAL
     string sql;
     MySqlCommand cmd;
 
-    public string ObterSenhaHash(string username)
+    public bool ValidarUserLogin(String user)
     {
-        string senhaHash = null;
+        bool userExists = false;
+        string sql = "SELECT COUNT(*) FROM tb_colaborador WHERE Username = @Username";
 
         using (MySqlConnection conn = mConn.AbrirConexao())
         {
-            string query = "SELECT Senha FROM tb_colaborador WHERE Username = @Username";
-
-            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+            using (MySqlCommand command = new MySqlCommand(sql, conn))
             {
-                cmd.Parameters.AddWithValue("@Username", username);
+                command.Parameters.AddWithValue("@Username", user);
+                int count = Convert.ToInt32(command.ExecuteScalar());
 
-                using (MySqlDataReader reader = cmd.ExecuteReader())
+                if (count > 0)
                 {
-                    if (reader.Read())
-                    {
-                        senhaHash = reader["Senha"].ToString();
-                    }
+                    userExists = true;
                 }
             }
 
             conn.Close();
         }
+        return userExists;
+    }
 
-        return senhaHash;
+    public bool ValidarSenhaLogin(String senha)
+    {
+        bool senhaExists = false;
+        string sql = "SELECT COUNT(*) FROM tb_colaborador WHERE Senha = @Senha";
+
+        using (MySqlConnection conn = mConn.AbrirConexao())
+        {
+            using (MySqlCommand command = new MySqlCommand(sql, conn))
+            {
+                command.Parameters.AddWithValue("Senha", senha);
+                int count = Convert.ToInt32(command.ExecuteScalar());
+
+                if (count > 0)
+                {
+                    senhaExists = true;
+                }
+            }
+
+            conn.Close();
+        }
+        return senhaExists;
     }
 }

@@ -130,7 +130,7 @@ namespace UI
                         // Adicione linhas à tabela de atendimentos
                         foreach (var atendimento in atendimentos)
                         {
-                            atendimentoTable.AddCell(getCell(atendimento.Codigo.ToString(), BaseColor.WHITE, BaseColor.BLACK, false));
+                            atendimentoTable.AddCell(getCell(atendimento.CodigoAtendimento.ToString(), BaseColor.WHITE, BaseColor.BLACK, false));
                             atendimentoTable.AddCell(getCell(atendimento.DataAtendimento.ToString("dd/MM/yyyy"), BaseColor.WHITE, BaseColor.BLACK, false));
                             atendimentoTable.AddCell(getCell(atendimento.StatusAtendimento, BaseColor.WHITE, BaseColor.BLACK, false));
                         }

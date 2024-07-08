@@ -112,6 +112,7 @@
             Controls.Add(btnEntrar);
             Controls.Add(txtUser);
             Controls.Add(lblUser);
+            MaximizeBox = false;
             Name = "frmLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmLogin";

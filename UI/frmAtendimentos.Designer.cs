@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            cboxCargoUser = new ComboBox();
+            cboxAtendente = new ComboBox();
             lblCargoUser = new Label();
             lblConfirmSenhaUser = new Label();
-            txtConfirmSenhaUser = new TextBox();
             txtID = new TextBox();
             panelNewUser = new Panel();
             btnVoltar = new Button();
@@ -44,22 +43,27 @@
             lblCodigoAtend = new Label();
             dtDataAtend = new DateTimePicker();
             cboxStatusAtend = new ComboBox();
+            label1 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            cboxCidadaoAtend = new ComboBox();
             panelNewUser.SuspendLayout();
             SuspendLayout();
             // 
-            // cboxCargoUser
+            // cboxAtendente
             // 
-            cboxCargoUser.FormattingEnabled = true;
-            cboxCargoUser.Items.AddRange(new object[] { "Administrador", "Conselheiro" });
-            cboxCargoUser.Location = new Point(107, 402);
-            cboxCargoUser.Name = "cboxCargoUser";
-            cboxCargoUser.Size = new Size(191, 28);
-            cboxCargoUser.TabIndex = 46;
+            cboxAtendente.FormattingEnabled = true;
+            cboxAtendente.Items.AddRange(new object[] { "Administrador", "Conselheiro" });
+            cboxAtendente.Location = new Point(61, 324);
+            cboxAtendente.Name = "cboxAtendente";
+            cboxAtendente.Size = new Size(302, 28);
+            cboxAtendente.TabIndex = 46;
             // 
             // lblCargoUser
             // 
             lblCargoUser.AutoSize = true;
-            lblCargoUser.Location = new Point(108, 379);
+            lblCargoUser.Location = new Point(74, 301);
             lblCargoUser.Name = "lblCargoUser";
             lblCargoUser.Size = new Size(78, 20);
             lblCargoUser.TabIndex = 45;
@@ -68,23 +72,15 @@
             // lblConfirmSenhaUser
             // 
             lblConfirmSenhaUser.AutoSize = true;
-            lblConfirmSenhaUser.Location = new Point(108, 306);
+            lblConfirmSenhaUser.Location = new Point(74, 246);
             lblConfirmSenhaUser.Name = "lblConfirmSenhaUser";
             lblConfirmSenhaUser.Size = new Size(65, 20);
             lblConfirmSenhaUser.TabIndex = 44;
             lblConfirmSenhaUser.Text = "Cidadão";
             // 
-            // txtConfirmSenhaUser
-            // 
-            txtConfirmSenhaUser.Location = new Point(107, 329);
-            txtConfirmSenhaUser.Name = "txtConfirmSenhaUser";
-            txtConfirmSenhaUser.Size = new Size(192, 27);
-            txtConfirmSenhaUser.TabIndex = 43;
-            txtConfirmSenhaUser.UseSystemPasswordChar = true;
-            // 
             // txtID
             // 
-            txtID.Location = new Point(188, 495);
+            txtID.Location = new Point(191, 409);
             txtID.Margin = new Padding(2);
             txtID.Name = "txtID";
             txtID.Size = new Size(43, 27);
@@ -129,7 +125,7 @@
             btnLimparUser.BackColor = Color.RoyalBlue;
             btnLimparUser.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLimparUser.ForeColor = SystemColors.Window;
-            btnLimparUser.Location = new Point(49, 487);
+            btnLimparUser.Location = new Point(52, 401);
             btnLimparUser.Name = "btnLimparUser";
             btnLimparUser.Size = new Size(109, 40);
             btnLimparUser.TabIndex = 39;
@@ -141,17 +137,18 @@
             btnAplicarUser.BackColor = Color.RoyalBlue;
             btnAplicarUser.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAplicarUser.ForeColor = SystemColors.Window;
-            btnAplicarUser.Location = new Point(263, 487);
+            btnAplicarUser.Location = new Point(266, 401);
             btnAplicarUser.Name = "btnAplicarUser";
             btnAplicarUser.Size = new Size(110, 40);
             btnAplicarUser.TabIndex = 41;
             btnAplicarUser.Text = "Aplicar";
             btnAplicarUser.UseVisualStyleBackColor = false;
+            btnAplicarUser.Click += btnAplicar_Click;
             // 
             // lblStatusAtend
             // 
             lblStatusAtend.AutoSize = true;
-            lblStatusAtend.Location = new Point(107, 231);
+            lblStatusAtend.Location = new Point(73, 193);
             lblStatusAtend.Name = "lblStatusAtend";
             lblStatusAtend.Size = new Size(49, 20);
             lblStatusAtend.TabIndex = 40;
@@ -160,7 +157,7 @@
             // lblDataAtend
             // 
             lblDataAtend.AutoSize = true;
-            lblDataAtend.Location = new Point(107, 156);
+            lblDataAtend.Location = new Point(74, 138);
             lblDataAtend.Name = "lblDataAtend";
             lblDataAtend.Size = new Size(41, 20);
             lblDataAtend.TabIndex = 37;
@@ -168,15 +165,15 @@
             // 
             // txtCodigoAtend
             // 
-            txtCodigoAtend.Location = new Point(107, 108);
+            txtCodigoAtend.Location = new Point(62, 108);
             txtCodigoAtend.Name = "txtCodigoAtend";
-            txtCodigoAtend.Size = new Size(192, 27);
+            txtCodigoAtend.Size = new Size(302, 27);
             txtCodigoAtend.TabIndex = 35;
             // 
             // lblCodigoAtend
             // 
             lblCodigoAtend.AutoSize = true;
-            lblCodigoAtend.Location = new Point(107, 85);
+            lblCodigoAtend.Location = new Point(74, 85);
             lblCodigoAtend.Name = "lblCodigoAtend";
             lblCodigoAtend.Size = new Size(58, 20);
             lblCodigoAtend.TabIndex = 34;
@@ -184,31 +181,88 @@
             // 
             // dtDataAtend
             // 
-            dtDataAtend.Location = new Point(107, 179);
+            dtDataAtend.Location = new Point(62, 161);
             dtDataAtend.Name = "dtDataAtend";
-            dtDataAtend.Size = new Size(192, 27);
+            dtDataAtend.Size = new Size(303, 27);
             dtDataAtend.TabIndex = 47;
             // 
             // cboxStatusAtend
             // 
             cboxStatusAtend.FormattingEnabled = true;
             cboxStatusAtend.Items.AddRange(new object[] { "Ativo", "Inativo" });
-            cboxStatusAtend.Location = new Point(108, 254);
+            cboxStatusAtend.Location = new Point(62, 216);
             cboxStatusAtend.Name = "cboxStatusAtend";
-            cboxStatusAtend.Size = new Size(191, 28);
+            cboxStatusAtend.Size = new Size(302, 28);
             cboxStatusAtend.TabIndex = 48;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.ForeColor = Color.Red;
+            label1.Location = new Point(62, 85);
+            label1.Name = "label1";
+            label1.Size = new Size(15, 20);
+            label1.TabIndex = 49;
+            label1.Text = "*";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.BackColor = Color.Transparent;
+            label4.ForeColor = Color.Red;
+            label4.Location = new Point(62, 301);
+            label4.Name = "label4";
+            label4.Size = new Size(15, 20);
+            label4.TabIndex = 52;
+            label4.Text = "*";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.BackColor = Color.Transparent;
+            label5.ForeColor = Color.Red;
+            label5.Location = new Point(62, 193);
+            label5.Name = "label5";
+            label5.Size = new Size(15, 20);
+            label5.TabIndex = 53;
+            label5.Text = "*";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.BackColor = Color.Transparent;
+            label6.ForeColor = Color.Red;
+            label6.Location = new Point(62, 138);
+            label6.Name = "label6";
+            label6.Size = new Size(15, 20);
+            label6.TabIndex = 54;
+            label6.Text = "*";
+            // 
+            // cboxCidadaoAtend
+            // 
+            cboxCidadaoAtend.FormattingEnabled = true;
+            cboxCidadaoAtend.Items.AddRange(new object[] { "Administrador", "Conselheiro" });
+            cboxCidadaoAtend.Location = new Point(61, 269);
+            cboxCidadaoAtend.Name = "cboxCidadaoAtend";
+            cboxCidadaoAtend.Size = new Size(302, 28);
+            cboxCidadaoAtend.TabIndex = 55;
             // 
             // frmAtendimentos
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(435, 576);
+            ClientSize = new Size(435, 491);
+            Controls.Add(cboxCidadaoAtend);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label1);
             Controls.Add(cboxStatusAtend);
             Controls.Add(dtDataAtend);
-            Controls.Add(cboxCargoUser);
+            Controls.Add(cboxAtendente);
             Controls.Add(lblCargoUser);
             Controls.Add(lblConfirmSenhaUser);
-            Controls.Add(txtConfirmSenhaUser);
             Controls.Add(txtID);
             Controls.Add(panelNewUser);
             Controls.Add(btnLimparUser);
@@ -217,7 +271,9 @@
             Controls.Add(lblDataAtend);
             Controls.Add(txtCodigoAtend);
             Controls.Add(lblCodigoAtend);
+            MaximizeBox = false;
             Name = "frmAtendimentos";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "frmAtendimentos";
             panelNewUser.ResumeLayout(false);
             panelNewUser.PerformLayout();
@@ -227,10 +283,9 @@
 
         #endregion
 
-        private ComboBox cboxCargoUser;
+        private ComboBox cboxAtendente;
         private Label lblCargoUser;
         private Label lblConfirmSenhaUser;
-        private TextBox txtConfirmSenhaUser;
         private TextBox txtID;
         private Panel panelNewUser;
         private Button btnVoltar;
@@ -243,5 +298,10 @@
         private Label lblCodigoAtend;
         private DateTimePicker dtDataAtend;
         private ComboBox cboxStatusAtend;
+        private Label label1;
+        private Label label4;
+        private Label label5;
+        private Label label6;
+        private ComboBox cboxCidadaoAtend;
     }
 }

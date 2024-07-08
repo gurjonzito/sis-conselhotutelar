@@ -15,6 +15,11 @@ namespace DAL
 
         public void InserirUsuario(Usuario usuario)
         {
+            if (usuario.id_cargo <= 0)
+            {
+                throw new ArgumentException("Cargo inválido."); // Lançar exceção se o cargo for inválido
+            }
+
             string senhaNaoCriptografada = usuario.Senha;
             string senhaCriptografada = HashPassword(senhaNaoCriptografada);
             usuario.Senha = senhaCriptografada;
@@ -35,6 +40,7 @@ namespace DAL
             // Fechar a conexão após a execução
             mConn.FecharConexao();
         }
+
 
         public string HashPassword(string password)
         {

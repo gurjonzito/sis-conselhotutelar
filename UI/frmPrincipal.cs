@@ -51,6 +51,18 @@ namespace UI
             frmVerCadastrados.ShowDialog();
         }
 
+        private void toolStripAtendimento_Click(object sender, EventArgs e)
+        {
+            UI.frmAtendimentos frmAtendimentos = new UI.frmAtendimentos();
+            frmAtendimentos.ShowDialog();
+        }
+
+        private void toolStripCidadao_Click(object sender, EventArgs e)
+        {
+            UI.frmCadCidadao frmCadCidadao = new UI.frmCadCidadao();
+            frmCadCidadao.ShowDialog();
+        }
+
         private void toolStripSair_Click(object sender, EventArgs e)
         {
             // Esconder a tela principal
