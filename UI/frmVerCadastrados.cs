@@ -27,12 +27,15 @@ namespace UI
         private void frmVerCadastrados_Load(object sender, EventArgs e)
         {
             LoadCidadaos();
+            LoadFamilias();
             LoadColaboradores();
             btnPesquisarColaborador.Click += new EventHandler(btnPesquisarColaborador_Click);
             btnPesquisarCidadao.Click += new EventHandler(btnPesquisarCidadao_Click);
+            btnPesquisarFamilia.Click += new EventHandler(btnPesquisarFamilia_Click);
             btnLimparTudo.Click += new EventHandler(btnLimparTudo_Click);
             dataGridColaborador.CellMouseDoubleClick += dataGridColaborador_CellMouseDoubleClick;
             dataGridCidadao.CellMouseDoubleClick += dataGridCidadao_CellMouseDoubleClick;
+            dataGridFamilia.CellMouseDoubleClick += dataGridFamilia_CellMouseDoubleClick;
         }
 
         private void LoadCidadaos()
@@ -69,9 +72,6 @@ namespace UI
             }
         }
 
-
-
-
         private void btnPesquisarCidadao_Click(object sender, EventArgs e)
         {
             string nomePesquisado = txtVerCidadao.Text.Trim();
@@ -106,6 +106,71 @@ namespace UI
                 {
                     Cidadao cidadao = cidadaos.Find(f => f.NomeCidadao == NomeCidadao);
                     // Execute alguma ação com o cidadão selecionado, se necessário
+                }
+            }
+        }
+
+        private void LoadFamilias()
+        {
+            familias = familiaBLL.ObterFamilias();
+            dataGridFamilia.DataSource = familias;
+
+            // Especificar quais colunas devem ser exibidas e a ordem
+            dataGridFamilia.Columns["Id"].DisplayIndex = 0;
+            dataGridFamilia.Columns["Id"].HeaderText = "ID";
+
+            dataGridFamilia.Columns["Sobrenome"].DisplayIndex = 1;
+            dataGridFamilia.Columns["Sobrenome"].HeaderText = "Sobrenomes";
+
+            dataGridFamilia.Columns["Responsavel"].DisplayIndex = 2;
+            dataGridFamilia.Columns["Responsavel"].HeaderText = "Responsável";
+
+            dataGridFamilia.Columns["Participantes"].DisplayIndex = 3;
+            dataGridFamilia.Columns["Participantes"].HeaderText = "Participantes";
+
+            // Ocultar todas as outras colunas
+            foreach (DataGridViewColumn column in dataGridFamilia.Columns)
+            {
+                if (column.Name != "Id" && column.Name != "Sobrenome" && column.Name != "Responsavel" && column.Name != "Participantes")
+                {
+                    column.Visible = false;
+                }
+            }
+        }
+
+        private void btnPesquisarFamilia_Click(object sender, EventArgs e)
+        {
+            string nomePesquisado = txtVerFamilia.Text.Trim();
+
+            if (string.IsNullOrEmpty(nomePesquisado))
+            {
+                MessageBox.Show("Digite um nome e tente novamente.", "Pesquisa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtVerFamilia.Focus();
+                return;
+            }
+
+            var familiasFiltradas = familias
+                .Where(c => c.Sobrenome.Contains(nomePesquisado, StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            if (familiasFiltradas.Count == 0)
+            {
+                MessageBox.Show("Família não encontrada.", "Pesquisa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+
+            dataGridFamilia.DataSource = familiasFiltradas;
+        }
+
+        private void dataGridFamilia_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow selectedRow = dataGridFamilia.Rows[e.RowIndex];
+                string SobrenomeFamilia = selectedRow.Cells["Sobrenome"].Value as string;
+
+                if (!string.IsNullOrEmpty(SobrenomeFamilia))
+                {
+                    Familia familia = familias.Find(f => f.Sobrenome == SobrenomeFamilia);
                 }
             }
         }
@@ -189,8 +254,10 @@ namespace UI
         {
             txtVerColaborador.Text = string.Empty;
             txtVerCidadao.Text = string.Empty;
+            txtVerFamilia.Text = string.Empty;
             LoadCidadaos();
             LoadColaboradores();
+            LoadFamilias();
         }
     }
 }

@@ -163,6 +163,7 @@
             Controls.Add(txtCaminhoRelatorio);
             Controls.Add(btnSalvarRelatorio);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "frmGerarRelatorio";
             StartPosition = FormStartPosition.CenterScreen;

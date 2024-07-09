@@ -79,27 +79,27 @@
             // toolStripAtendimento
             // 
             toolStripAtendimento.Name = "toolStripAtendimento";
-            toolStripAtendimento.Size = new Size(224, 28);
+            toolStripAtendimento.Size = new Size(194, 28);
             toolStripAtendimento.Text = "Atendimento";
             toolStripAtendimento.Click += toolStripAtendimento_Click;
             // 
             // toolStripCaso
             // 
             toolStripCaso.Name = "toolStripCaso";
-            toolStripCaso.Size = new Size(224, 28);
+            toolStripCaso.Size = new Size(194, 28);
             toolStripCaso.Text = "Caso";
             // 
             // toolStripCidadao
             // 
             toolStripCidadao.Name = "toolStripCidadao";
-            toolStripCidadao.Size = new Size(224, 28);
+            toolStripCidadao.Size = new Size(194, 28);
             toolStripCidadao.Text = "Cidadão";
             toolStripCidadao.Click += toolStripCidadao_Click;
             // 
             // toolStripFamilia
             // 
             toolStripFamilia.Name = "toolStripFamilia";
-            toolStripFamilia.Size = new Size(224, 28);
+            toolStripFamilia.Size = new Size(194, 28);
             toolStripFamilia.Text = "Família";
             toolStripFamilia.Click += toolStripFamilia_Click;
             // 
@@ -253,6 +253,7 @@
             Controls.Add(label2);
             Controls.Add(panelPrincipal);
             Controls.Add(toolStripPrincipal);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "frmPrincipal";
             StartPosition = FormStartPosition.CenterScreen;

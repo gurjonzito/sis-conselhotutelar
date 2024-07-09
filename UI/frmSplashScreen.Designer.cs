@@ -65,6 +65,7 @@
             ClientSize = new Size(456, 406);
             Controls.Add(pictureBox1);
             Controls.Add(progressBar1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "frmSplashScreen";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmSplashScreen";

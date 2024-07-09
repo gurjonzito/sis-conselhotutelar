@@ -271,6 +271,7 @@
             Controls.Add(lblDataAtend);
             Controls.Add(txtCodigoAtend);
             Controls.Add(lblCodigoAtend);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "frmAtendimentos";
             StartPosition = FormStartPosition.CenterScreen;

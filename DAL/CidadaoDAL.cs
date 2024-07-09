@@ -106,8 +106,12 @@ namespace DAL
             using (MySqlConnection connection = mConn.AbrirConexao())
             {
                 string query = "SELECT c.Id, c.Nome, c.Idade, c.Telefone, c.Email, f.Sobrenome AS NomeFamilia " +
-                               "FROM tb_clientes c " +
-                               "INNER JOIN tb_familias f ON c.IdFamilia = f.Id";
+                   "FROM tb_clientes c " +
+                   "LEFT JOIN tb_familias f ON c.IdFamilia = f.Id " +
+                   "UNION " +
+                   "SELECT c.Id, c.Nome, c.Idade, c.Telefone, c.Email, f.Sobrenome AS NomeFamilia " +
+                   "FROM tb_familias f " +
+                   "RIGHT JOIN tb_clientes c ON c.IdFamilia = f.Id";
 
                 using (MySqlCommand cmd = new MySqlCommand(query, connection))
                 {

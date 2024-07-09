@@ -43,3 +43,9 @@ C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\UI\obj\Debug\net8.0-window
 C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\UI\obj\Debug\net8.0-windows\UI.dll
 C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\UI\obj\Debug\net8.0-windows\refint\UI.dll
 C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\UI\obj\Debug\net8.0-windows\UI.pdb
+C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\UI\bin\Debug\net8.0-windows\UI.deps.json
+C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\UI\bin\Debug\net8.0-windows\UI.runtimeconfig.json
+C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\UI\bin\Debug\net8.0-windows\UI.pdb
+C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\UI\obj\Debug\net8.0-windows\UI.csproj.Up2Date
+C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\UI\obj\Debug\net8.0-windows\UI.genruntimeconfig.cache
+C:\Users\Alan Miguel\source\repos\sis-conselhotutelar\UI\obj\Debug\net8.0-windows\ref\UI.dll

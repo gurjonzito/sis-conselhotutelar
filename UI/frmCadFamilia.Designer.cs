@@ -196,6 +196,7 @@
             Controls.Add(lblUsernameUser);
             Controls.Add(txtSobrenomeFamilia);
             Controls.Add(lblSobrenomeFamilia);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "frmCadFamilia";
             StartPosition = FormStartPosition.CenterScreen;

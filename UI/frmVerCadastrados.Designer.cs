@@ -63,7 +63,7 @@
             lblVerCadastrados.AutoSize = true;
             lblVerCadastrados.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblVerCadastrados.ForeColor = SystemColors.Window;
-            lblVerCadastrados.Location = new Point(303, 19);
+            lblVerCadastrados.Location = new Point(218, 19);
             lblVerCadastrados.Name = "lblVerCadastrados";
             lblVerCadastrados.Size = new Size(446, 31);
             lblVerCadastrados.TabIndex = 0;
@@ -72,8 +72,9 @@
             // dataGridCidadao
             // 
             dataGridCidadao.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridCidadao.Location = new Point(132, 210);
+            dataGridCidadao.Location = new Point(50, 211);
             dataGridCidadao.Name = "dataGridCidadao";
+            dataGridCidadao.ReadOnly = true;
             dataGridCidadao.RowHeadersWidth = 51;
             dataGridCidadao.Size = new Size(377, 188);
             dataGridCidadao.TabIndex = 1;
@@ -82,26 +83,29 @@
             // dataGridColaborador
             // 
             dataGridColaborador.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridColaborador.Location = new Point(132, 541);
+            dataGridColaborador.Location = new Point(118, 542);
             dataGridColaborador.Name = "dataGridColaborador";
+            dataGridColaborador.ReadOnly = true;
             dataGridColaborador.RowHeadersWidth = 51;
-            dataGridColaborador.Size = new Size(814, 188);
+            dataGridColaborador.Size = new Size(666, 188);
             dataGridColaborador.TabIndex = 2;
             dataGridColaborador.CellMouseDoubleClick += dataGridColaborador_CellMouseDoubleClick;
             // 
             // dataGridFamilia
             // 
             dataGridFamilia.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridFamilia.Location = new Point(569, 210);
+            dataGridFamilia.Location = new Point(487, 211);
             dataGridFamilia.Name = "dataGridFamilia";
+            dataGridFamilia.ReadOnly = true;
             dataGridFamilia.RowHeadersWidth = 51;
             dataGridFamilia.Size = new Size(377, 188);
             dataGridFamilia.TabIndex = 3;
+            dataGridFamilia.CellMouseDoubleClick += dataGridFamilia_CellMouseDoubleClick;
             // 
             // lblVerCidadao
             // 
             lblVerCidadao.AutoSize = true;
-            lblVerCidadao.Location = new Point(135, 119);
+            lblVerCidadao.Location = new Point(53, 120);
             lblVerCidadao.Name = "lblVerCidadao";
             lblVerCidadao.Size = new Size(65, 20);
             lblVerCidadao.TabIndex = 4;
@@ -110,7 +114,7 @@
             // lblVerFamilia
             // 
             lblVerFamilia.AutoSize = true;
-            lblVerFamilia.Location = new Point(569, 118);
+            lblVerFamilia.Location = new Point(487, 119);
             lblVerFamilia.Name = "lblVerFamilia";
             lblVerFamilia.Size = new Size(56, 20);
             lblVerFamilia.TabIndex = 5;
@@ -119,7 +123,7 @@
             // lblVerColaborador
             // 
             lblVerColaborador.AutoSize = true;
-            lblVerColaborador.Location = new Point(132, 453);
+            lblVerColaborador.Location = new Point(118, 454);
             lblVerColaborador.Name = "lblVerColaborador";
             lblVerColaborador.Size = new Size(93, 20);
             lblVerColaborador.TabIndex = 6;
@@ -127,14 +131,14 @@
             // 
             // txtVerCidadao
             // 
-            txtVerCidadao.Location = new Point(132, 158);
+            txtVerCidadao.Location = new Point(50, 159);
             txtVerCidadao.Name = "txtVerCidadao";
             txtVerCidadao.Size = new Size(203, 27);
             txtVerCidadao.TabIndex = 7;
             // 
             // btnPesquisarCidadao
             // 
-            btnPesquisarCidadao.Location = new Point(341, 157);
+            btnPesquisarCidadao.Location = new Point(259, 158);
             btnPesquisarCidadao.Name = "btnPesquisarCidadao";
             btnPesquisarCidadao.Size = new Size(149, 29);
             btnPesquisarCidadao.TabIndex = 8;
@@ -144,23 +148,24 @@
             // 
             // btnPesquisarFamilia
             // 
-            btnPesquisarFamilia.Location = new Point(778, 157);
+            btnPesquisarFamilia.Location = new Point(696, 158);
             btnPesquisarFamilia.Name = "btnPesquisarFamilia";
             btnPesquisarFamilia.Size = new Size(152, 29);
             btnPesquisarFamilia.TabIndex = 10;
             btnPesquisarFamilia.Text = "Pesquisar por nome";
             btnPesquisarFamilia.UseVisualStyleBackColor = true;
+            btnPesquisarFamilia.Click += btnPesquisarFamilia_Click;
             // 
             // txtVerFamilia
             // 
-            txtVerFamilia.Location = new Point(569, 158);
+            txtVerFamilia.Location = new Point(487, 159);
             txtVerFamilia.Name = "txtVerFamilia";
             txtVerFamilia.Size = new Size(203, 27);
             txtVerFamilia.TabIndex = 9;
             // 
             // btnPesquisarColaborador
             // 
-            btnPesquisarColaborador.Location = new Point(450, 489);
+            btnPesquisarColaborador.Location = new Point(436, 490);
             btnPesquisarColaborador.Name = "btnPesquisarColaborador";
             btnPesquisarColaborador.Size = new Size(163, 29);
             btnPesquisarColaborador.TabIndex = 12;
@@ -170,14 +175,14 @@
             // 
             // txtVerColaborador
             // 
-            txtVerColaborador.Location = new Point(132, 491);
+            txtVerColaborador.Location = new Point(118, 492);
             txtVerColaborador.Name = "txtVerColaborador";
             txtVerColaborador.Size = new Size(312, 27);
             txtVerColaborador.TabIndex = 11;
             // 
             // btnLimparTudo
             // 
-            btnLimparTudo.Location = new Point(132, 780);
+            btnLimparTudo.Location = new Point(50, 785);
             btnLimparTudo.Name = "btnLimparTudo";
             btnLimparTudo.Size = new Size(118, 29);
             btnLimparTudo.TabIndex = 13;
@@ -189,7 +194,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1082, 870);
+            ClientSize = new Size(909, 870);
             Controls.Add(btnLimparTudo);
             Controls.Add(btnPesquisarColaborador);
             Controls.Add(txtVerColaborador);

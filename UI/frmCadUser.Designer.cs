@@ -331,6 +331,7 @@
             Controls.Add(lblUsernameUser);
             Controls.Add(txtNomeUser);
             Controls.Add(lblNomeUser);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             Name = "frmCadUser";
             StartPosition = FormStartPosition.CenterScreen;
