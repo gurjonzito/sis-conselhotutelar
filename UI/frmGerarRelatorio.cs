@@ -13,7 +13,9 @@ namespace UI
 {
     public partial class frmGerarRelatorio : Form
     {
-        public ColaboradorBLL colaboradorBLL = new ColaboradorBLL();
+        private readonly AtendimentoBLL atendimentoBLL = new AtendimentoBLL();
+        private readonly ColaboradorBLL colaboradorBLL = new ColaboradorBLL();
+        private string caminhoDestino;
 
         public frmGerarRelatorio()
         {
@@ -23,17 +25,25 @@ namespace UI
         private void frmGerarRelatorio_Load(object sender, EventArgs e)
         {
             PreencherComboBoxColaboradores();
+            PreencherComboBoxCodigos();
         }
-
-        private string caminhoDestino;
 
         private void PreencherComboBoxColaboradores()
         {
-            DataTable dt = colaboradorBLL.CarregarColaborador();
+            List<Colaborador> colaboradores = colaboradorBLL.GetColaboradoresAtivosComSetor();
+            cboxColaborador.DataSource = colaboradores;
+            cboxColaborador.DisplayMember = "NomeColaborador"; // Define o campo a ser exibido no ComboBox
+            cboxColaborador.ValueMember = "IdColaborador"; // Define o campo do valor selecionado
+            cboxColaborador.SelectedIndex = -1;
+        }
 
-            cboxColaborador.DisplayMember = "Nome"; // Define a coluna a ser exibida
-            cboxColaborador.ValueMember = "Id"; // Define a coluna a ser usada como valor selecionado
-            cboxColaborador.DataSource = dt;
+        private void PreencherComboBoxCodigos()
+        {
+            List<Atendimento> atendimentos = atendimentoBLL.GetAtendimentos();
+            cboxCodigo.DataSource = atendimentos;
+            cboxCodigo.DisplayMember = "CodigoAtendimento"; // Define o campo a ser exibido no ComboBox
+            cboxCodigo.ValueMember = "IdAtendimento"; // Define o campo do valor selecionado
+            cboxCodigo.SelectedIndex = -1;
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -51,10 +61,7 @@ namespace UI
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                // Obtenha o caminho escolhido pelo usuário
                 caminhoDestino = saveFileDialog.FileName;
-
-                // Exiba o caminho no TextBox txtDestino
                 txtCaminhoRelatorio.Text = caminhoDestino;
             }
         }
@@ -63,109 +70,130 @@ namespace UI
         {
             try
             {
-                int idColaboradorSelecionado = (int)((DataRowView)cboxColaborador.SelectedItem)["Id"];
-
-                AtendimentoBLL atendimentoBLL = new AtendimentoBLL();
-                ColaboradorBLL colaboradorBLL = new ColaboradorBLL();
-
-                Colaborador colaborador = colaboradorBLL.ObterColaboradorPorID(idColaboradorSelecionado);
-                List<Atendimento> atendimentos = atendimentoBLL.ObterAtendimentosPorColaborador(idColaboradorSelecionado);
-
-                using (FileStream fs = new FileStream(caminhoDestino, FileMode.Create))
+                if (cboxColaborador.SelectedItem != null && cboxColaborador.SelectedItem is Colaborador)
                 {
-                    using (Document document = new Document())
+                    Colaborador colaboradorSelecionado = (Colaborador)cboxColaborador.SelectedItem;
+
+                    List<Atendimento> atendimentos = new List<Atendimento>();
+
+                    if (cboxCodigo.SelectedItem != null && cboxCodigo.SelectedItem is Atendimento)
                     {
-                        PdfWriter writer = PdfWriter.GetInstance(document, fs);
+                        Atendimento codigoSelecionado = (Atendimento)cboxCodigo.SelectedItem;
+                        string codigoAtendimento = codigoSelecionado.CodigoAtendimento;
 
-                        document.Open();
-
-                        // Adicione o título
-                        iTextSharp.text.Font titleFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14, BaseColor.BLACK);
-                        Paragraph title = new Paragraph("Informações do colaborador", titleFont)
-                        {
-                            Alignment = Element.ALIGN_LEFT
-                        };
-                        document.Add(new Chunk("\n"));
-                        document.Add(title);
-
-                        // Adicione o nome do colaborador
-                        iTextSharp.text.Font nameFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.DARK_GRAY);
-                        Paragraph name = new Paragraph("Nome: " + colaborador.NomeColaborador, nameFont)
-                        {
-                            Alignment = Element.ALIGN_LEFT
-                        };
-                        document.Add(new Chunk("\n"));
-                        document.Add(name);
-
-                        // Adicione o email do colaborador
-                        iTextSharp.text.Font emailFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.DARK_GRAY);
-                        Paragraph email = new Paragraph("E-mail: " + colaborador.EmailColaborador, emailFont)
-                        {
-                            Alignment = Element.ALIGN_LEFT
-                        };
-                        document.Add(email);
-                        document.Add(new Chunk("\n"));
-
-                        // Adicione o titulo de atendimento
-                        iTextSharp.text.Font atendimentoFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14, BaseColor.BLACK);
-                        Paragraph titleAtendimento = new Paragraph("Informações do atendimento", atendimentoFont)
-                        {
-                            Alignment = Element.ALIGN_LEFT
-                        };
-                        document.Add(titleAtendimento);
-
-
-                        // Adicione a tabela de atendimentos
-                        PdfPTable atendimentoTable = new PdfPTable(3)
-                        {
-                            WidthPercentage = 100, // Preencha a largura da página
-                            SpacingBefore = 8f // Adicione espaço antes da tabela
-                        };
-
-                        // Adicione cabeçalhos à tabela de atendimentos
-                        atendimentoTable.AddCell(getHeaderCell("Código"));
-                        atendimentoTable.AddCell(getHeaderCell("Data"));
-                        atendimentoTable.AddCell(getHeaderCell("Status"));
-
-                        // Adicione linhas à tabela de atendimentos
-                        foreach (var atendimento in atendimentos)
-                        {
-                            atendimentoTable.AddCell(getCell(atendimento.CodigoAtendimento.ToString(), BaseColor.WHITE, BaseColor.BLACK, false));
-                            atendimentoTable.AddCell(getCell(atendimento.DataAtendimento.ToString("dd/MM/yyyy"), BaseColor.WHITE, BaseColor.BLACK, false));
-                            atendimentoTable.AddCell(getCell(atendimento.StatusAtendimento, BaseColor.WHITE, BaseColor.BLACK, false));
-                        }
-
-                        document.Add(atendimentoTable);
-                        document.Add(new Chunk("\n"));
-
-                        PdfPTable obsTable = new PdfPTable(1)
-                        {
-                            DefaultCell = { Border = iTextSharp.text.Rectangle.NO_BORDER },
-                            WidthPercentage = 100, // Preencha a largura da página
-                            SpacingBefore = 10f // Adicione espaço antes da tabela
-                        };
-
-                        obsTable.AddCell(getHeaderCell("Observações"));
-
-                        obsTable.AddCell(getCell(txtObservacao.Text, BaseColor.LIGHT_GRAY, BaseColor.WHITE, false));
-
-                        document.Add(obsTable);
-                        document.Add(new Chunk("\n"));
-
-                        // Adicione data e hora de geração do relatório
-                        DateTime dataHoraAtual = DateTime.Now;
-                        string dataHoraFormatada = "Data e hora de geração: " + dataHoraAtual.ToString("dd/MM/yyyy HH:mm:ss");
-                        Paragraph dataHora = new Paragraph(dataHoraFormatada)
-                        {
-                            Alignment = Element.ALIGN_RIGHT
-                        };
-                        document.Add(dataHora);
-
-                        // Feche o documento
-                        document.Close();
-
-                        MessageBox.Show("Relatório gerado com sucesso, salvo em: " + caminhoDestino, "PDF Gerado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        // Buscar apenas o atendimento com o código especificado
+                        Atendimento atendimento = atendimentoBLL.ObterAtendimentoPorCodigo(codigoAtendimento);
+                        if (atendimento != null)
+                            atendimentos.Add(atendimento);
                     }
+                    else
+                    {
+                        // Buscar todos os atendimentos do colaborador
+                        atendimentos = atendimentoBLL.ObterAtendimentosPorColaborador(colaboradorSelecionado.IdColaborador);
+                    }
+
+                    if (atendimentos.Count > 0)
+                    {
+                        using (FileStream fs = new FileStream(caminhoDestino, FileMode.Create))
+                        {
+                            using (Document document = new Document())
+                            {
+                                PdfWriter writer = PdfWriter.GetInstance(document, fs);
+
+                                document.Open();
+
+                                // Adicione o título do colaborador
+                                Paragraph titleColaborador = new Paragraph("Informações do colaborador", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14, BaseColor.BLACK));
+                                titleColaborador.Alignment = Element.ALIGN_LEFT;
+                                document.Add(titleColaborador);
+                                document.Add(new Chunk("\n"));
+
+                                // Adicione detalhes do colaborador
+                                Paragraph detailsColaborador = new Paragraph();
+                                detailsColaborador.Add(new Chunk("Nome: ", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.DARK_GRAY)));
+                                detailsColaborador.Add(new Chunk(colaboradorSelecionado.NomeColaborador, FontFactory.GetFont(FontFactory.HELVETICA, 12, BaseColor.DARK_GRAY)));
+                                detailsColaborador.Add(new Chunk("\n"));
+                                detailsColaborador.Add(new Chunk("E-mail: ", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.DARK_GRAY)));
+                                detailsColaborador.Add(new Chunk(colaboradorSelecionado.EmailColaborador, FontFactory.GetFont(FontFactory.HELVETICA, 12, BaseColor.DARK_GRAY)));
+                                detailsColaborador.Add(new Chunk("\n"));
+                                detailsColaborador.Add(new Chunk("Cargo: ", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 12, BaseColor.DARK_GRAY)));
+                                detailsColaborador.Add(new Chunk(colaboradorSelecionado.NomeCargo, FontFactory.GetFont(FontFactory.HELVETICA, 12, BaseColor.DARK_GRAY)));
+                                detailsColaborador.Add(new Chunk("\n\n"));
+                                document.Add(detailsColaborador);
+
+                                // Adicione o título dos atendimentos
+                                Paragraph titleAtendimentos = new Paragraph("Informações do atendimento", FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 14, BaseColor.BLACK));
+                                titleAtendimentos.Alignment = Element.ALIGN_LEFT;
+                                document.Add(titleAtendimentos);
+                                document.Add(new Chunk("\n"));
+
+                                foreach (var atendimento in atendimentos)
+                                {
+                                    // Adicione informações principais do atendimento
+                                    PdfPTable atendimentoTable = new PdfPTable(4);
+                                    atendimentoTable.WidthPercentage = 100;
+                                    atendimentoTable.SpacingBefore = 5f;
+
+                                    // Adicione cabeçalhos à tabela de atendimentos
+                                    atendimentoTable.AddCell(getHeaderCell("Código"));
+                                    atendimentoTable.AddCell(getHeaderCell("Data"));
+                                    atendimentoTable.AddCell(getHeaderCell("Status"));
+                                    atendimentoTable.AddCell(getHeaderCell("Atendente"));
+
+                                    // Adicione dados do atendimento
+                                    atendimentoTable.AddCell(getCell(atendimento.CodigoAtendimento, BaseColor.WHITE, BaseColor.BLACK, false)); // Código como string
+                                    atendimentoTable.AddCell(getCell(atendimento.DataAtendimento.ToString(), BaseColor.WHITE, BaseColor.BLACK, false));
+                                    atendimentoTable.AddCell(getCell(atendimento.StatusAtendimento, BaseColor.WHITE, BaseColor.BLACK, false));
+                                    atendimentoTable.AddCell(getCell(atendimento.NomeAtendente, BaseColor.WHITE, BaseColor.BLACK, false));
+
+                                    document.Add(atendimentoTable);
+                                    document.Add(new Chunk("\n"));
+
+                                    // Adicione tabela de descritivo do atendimento
+                                    PdfPTable descritivoTable = new PdfPTable(1);
+                                    descritivoTable.WidthPercentage = 100;
+                                    descritivoTable.SpacingBefore = 10f;
+
+                                    descritivoTable.AddCell(getHeaderCell("Descritivo do Atendimento"));
+                                    descritivoTable.AddCell(getCell(atendimento.DescritivoAtendimento, BaseColor.WHITE, BaseColor.BLACK, false));
+
+                                    document.Add(descritivoTable);
+                                    document.Add(new Chunk("\n"));
+                                }
+
+                                // Adicione as observações finais
+                                PdfPTable obsTable = new PdfPTable(1);
+                                obsTable.WidthPercentage = 100;
+                                obsTable.SpacingBefore = 10f;
+
+                                obsTable.AddCell(getHeaderCell("Observações finais"));
+                                obsTable.AddCell(getCell(txtObservacao.Text, BaseColor.LIGHT_GRAY, BaseColor.WHITE, false));
+
+                                document.Add(obsTable);
+                                document.Add(new Chunk("\n"));
+
+                                // Adicione data e hora de geração do relatório
+                                DateTime dataHoraAtual = DateTime.Now;
+                                string dataHoraFormatada = "Data e hora de geração: " + dataHoraAtual.ToString("dd/MM/yyyy HH:mm:ss");
+                                Paragraph dataHora = new Paragraph(dataHoraFormatada);
+                                dataHora.Alignment = Element.ALIGN_RIGHT;
+                                document.Add(dataHora);
+
+                                // Feche o documento
+                                document.Close();
+
+                                MessageBox.Show("Relatório gerado com sucesso, salvo em: " + caminhoDestino, "PDF Gerado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Não foram encontrados atendimentos para o colaborador selecionado.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, selecione um colaborador válido.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
@@ -174,18 +202,20 @@ namespace UI
             }
         }
 
+
+
+
         private PdfPCell getHeaderCell(string text)
         {
             PdfPCell cell = new PdfPCell(new Phrase(text))
             {
                 BackgroundColor = new BaseColor(65, 105, 225), // Royal Blue
                 HorizontalAlignment = Element.ALIGN_CENTER,
-                BorderWidth = 0.5f, // Borda
-                BorderColor = BaseColor.BLACK, // Cor da borda
+                BorderWidth = 0.5f,
+                BorderColor = BaseColor.BLACK,
                 Padding = 5
             };
 
-            // Defina a cor do texto como branca
             cell.Phrase.Font.Color = BaseColor.WHITE;
             cell.Phrase.Font.SetStyle(1); // Negrito
 
@@ -197,11 +227,10 @@ namespace UI
             PdfPCell cell = new PdfPCell(new Phrase(text))
             {
                 BackgroundColor = alternateRowColor ? backgroundColor : BaseColor.WHITE,
-                HorizontalAlignment = Element.ALIGN_CENTER,
+                HorizontalAlignment = Element.ALIGN_LEFT,
                 Padding = 5,
-                Border = iTextSharp.text.Rectangle.LEFT_BORDER | iTextSharp.text.Rectangle.RIGHT_BORDER | iTextSharp.text.Rectangle.TOP_BORDER | iTextSharp.text.Rectangle.BOTTOM_BORDER,
                 BorderWidth = 0.5f,
-                BorderColor = new BaseColor(63, 96, 35)
+                BorderColor = BaseColor.BLACK
             };
 
             return cell;

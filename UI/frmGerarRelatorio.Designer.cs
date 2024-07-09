@@ -39,6 +39,8 @@
             txtCaminhoRelatorio = new TextBox();
             lblObservacoes = new Label();
             txtObservacao = new RichTextBox();
+            cboxCodigo = new ComboBox();
+            label1 = new Label();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -49,7 +51,7 @@
             panel1.Controls.Add(lblRelatorios);
             panel1.Location = new Point(0, 1);
             panel1.Name = "panel1";
-            panel1.Size = new Size(710, 58);
+            panel1.Size = new Size(838, 58);
             panel1.TabIndex = 0;
             // 
             // btnVoltar
@@ -70,7 +72,7 @@
             lblRelatorios.AutoSize = true;
             lblRelatorios.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblRelatorios.ForeColor = SystemColors.Window;
-            lblRelatorios.Location = new Point(223, 14);
+            lblRelatorios.Location = new Point(259, 14);
             lblRelatorios.Name = "lblRelatorios";
             lblRelatorios.Size = new Size(219, 28);
             lblRelatorios.TabIndex = 0;
@@ -78,7 +80,7 @@
             // 
             // btnSalvarRelatorio
             // 
-            btnSalvarRelatorio.Location = new Point(469, 214);
+            btnSalvarRelatorio.Location = new Point(561, 290);
             btnSalvarRelatorio.Name = "btnSalvarRelatorio";
             btnSalvarRelatorio.Size = new Size(94, 29);
             btnSalvarRelatorio.TabIndex = 1;
@@ -91,7 +93,7 @@
             btnGerarRelatorio.BackColor = Color.RoyalBlue;
             btnGerarRelatorio.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnGerarRelatorio.ForeColor = SystemColors.Window;
-            btnGerarRelatorio.Location = new Point(432, 498);
+            btnGerarRelatorio.Location = new Point(524, 564);
             btnGerarRelatorio.Name = "btnGerarRelatorio";
             btnGerarRelatorio.Size = new Size(131, 53);
             btnGerarRelatorio.TabIndex = 3;
@@ -102,7 +104,7 @@
             // lblCaminhoRelatorio
             // 
             lblCaminhoRelatorio.AutoSize = true;
-            lblCaminhoRelatorio.Location = new Point(90, 193);
+            lblCaminhoRelatorio.Location = new Point(90, 269);
             lblCaminhoRelatorio.Name = "lblCaminhoRelatorio";
             lblCaminhoRelatorio.Size = new Size(255, 20);
             lblCaminhoRelatorio.TabIndex = 1;
@@ -111,7 +113,7 @@
             // lblColaborador
             // 
             lblColaborador.AutoSize = true;
-            lblColaborador.Location = new Point(90, 117);
+            lblColaborador.Location = new Point(90, 106);
             lblColaborador.Name = "lblColaborador";
             lblColaborador.Size = new Size(158, 20);
             lblColaborador.TabIndex = 5;
@@ -120,22 +122,22 @@
             // cboxColaborador
             // 
             cboxColaborador.FormattingEnabled = true;
-            cboxColaborador.Location = new Point(90, 140);
+            cboxColaborador.Location = new Point(90, 129);
             cboxColaborador.Name = "cboxColaborador";
-            cboxColaborador.Size = new Size(201, 28);
+            cboxColaborador.Size = new Size(301, 28);
             cboxColaborador.TabIndex = 6;
             // 
             // txtCaminhoRelatorio
             // 
-            txtCaminhoRelatorio.Location = new Point(90, 216);
+            txtCaminhoRelatorio.Location = new Point(90, 292);
             txtCaminhoRelatorio.Name = "txtCaminhoRelatorio";
-            txtCaminhoRelatorio.Size = new Size(362, 27);
+            txtCaminhoRelatorio.Size = new Size(465, 27);
             txtCaminhoRelatorio.TabIndex = 2;
             // 
             // lblObservacoes
             // 
             lblObservacoes.AutoSize = true;
-            lblObservacoes.Location = new Point(90, 273);
+            lblObservacoes.Location = new Point(90, 349);
             lblObservacoes.Name = "lblObservacoes";
             lblObservacoes.Size = new Size(183, 20);
             lblObservacoes.TabIndex = 8;
@@ -143,17 +145,36 @@
             // 
             // txtObservacao
             // 
-            txtObservacao.Location = new Point(90, 296);
+            txtObservacao.Location = new Point(90, 372);
             txtObservacao.Name = "txtObservacao";
-            txtObservacao.Size = new Size(473, 160);
+            txtObservacao.Size = new Size(565, 160);
             txtObservacao.TabIndex = 9;
             txtObservacao.Text = "";
+            // 
+            // cboxCodigo
+            // 
+            cboxCodigo.FormattingEnabled = true;
+            cboxCodigo.Location = new Point(90, 212);
+            cboxCodigo.Name = "cboxCodigo";
+            cboxCodigo.Size = new Size(301, 28);
+            cboxCodigo.TabIndex = 11;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(90, 189);
+            label1.Name = "label1";
+            label1.Size = new Size(239, 20);
+            label1.TabIndex = 10;
+            label1.Text = "Escolha o atendimento por código";
             // 
             // frmGerarRelatorio
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(685, 596);
+            ClientSize = new Size(750, 658);
+            Controls.Add(cboxCodigo);
+            Controls.Add(label1);
             Controls.Add(txtObservacao);
             Controls.Add(lblObservacoes);
             Controls.Add(cboxColaborador);
@@ -188,5 +209,7 @@
         private TextBox txtCaminhoRelatorio;
         private Label lblObservacoes;
         private RichTextBox txtObservacao;
+        private ComboBox cboxCodigo;
+        private Label label1;
     }
 }

@@ -19,14 +19,15 @@ public class AtendimentoDAL
         using (MySqlConnection conn = mConn.AbrirConexao())
         {
             string query = @"INSERT INTO tb_atendimentos 
-                            (Codigo, DataAtendimento, StatusAtendimento, IdCliente, IdAtendente) 
-                            VALUES (@Codigo, @DataAtendimento, @StatusAtendimento, @IdCliente, @IdAtendente)";
+                            (Codigo, DataAtendimento, StatusAtendimento, Descritivo, IdCliente, IdAtendente) 
+                            VALUES (@Codigo, @DataAtendimento, @StatusAtendimento, @Descritivo, @IdCliente, @IdAtendente)";
 
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {
                 cmd.Parameters.AddWithValue("@Codigo", atendimento.CodigoAtendimento);
                 cmd.Parameters.AddWithValue("@DataAtendimento", atendimento.DataAtendimento);
                 cmd.Parameters.AddWithValue("@StatusAtendimento", atendimento.StatusAtendimento);
+                cmd.Parameters.AddWithValue("@Descritivo", atendimento.DescritivoAtendimento);
                 cmd.Parameters.AddWithValue("@IdCliente", atendimento.IdCliente.HasValue ? (object)atendimento.IdCliente.Value : DBNull.Value);
                 cmd.Parameters.AddWithValue("@IdAtendente", atendimento.IdAtendente.HasValue ? (object)atendimento.IdAtendente.Value : DBNull.Value);
 
@@ -180,7 +181,7 @@ public class AtendimentoDAL
 
         using (MySqlConnection connection = mConn.AbrirConexao())
         {
-            string query = "SELECT a.Id, a.Codigo, a.DataAtendimento, a.StatusAtendimento, c.Nome AS NomeCidadao, co.Nome AS NomeAtendente " +
+            string query = "SELECT a.Id, a.Codigo, a.DataAtendimento, a.StatusAtendimento, c.Nome AS NomeCidadao, co.Nome AS NomeAtendente, a.Descritivo " +
                            "FROM tb_atendimentos a " +
                            "LEFT JOIN tb_clientes c ON a.IdCliente = c.Id " +
                            "LEFT JOIN tb_colaborador co ON a.IdAtendente = co.Id";
@@ -198,7 +199,8 @@ public class AtendimentoDAL
                             DataAtendimento = Convert.ToDateTime(reader["DataAtendimento"]),
                             StatusAtendimento = reader["StatusAtendimento"].ToString(),
                             NomeCidadao = reader["NomeCidadao"].ToString(),
-                            NomeAtendente = reader["NomeAtendente"].ToString()
+                            NomeAtendente = reader["NomeAtendente"].ToString(),
+                            DescritivoAtendimento = reader["Descritivo"].ToString()
                         };
 
                         atendimentos.Add(atendimento);
@@ -209,12 +211,108 @@ public class AtendimentoDAL
         return atendimentos;
     }
 
+    public List<Atendimento> GetAtendimentosComNomesPorColaborador(int idColaborador)
+    {
+        List<Atendimento> atendimentos = new List<Atendimento>();
+
+        using (MySqlConnection connection = mConn.AbrirConexao())
+        {
+            string query = @"SELECT a.Id, a.Codigo, a.DataAtendimento, a.StatusAtendimento, 
+                                c.Nome AS NomeCidadao, co.Nome AS NomeAtendente, a.Descritivo
+                         FROM tb_atendimentos a
+                         LEFT JOIN tb_clientes c ON a.IdCliente = c.Id
+                         LEFT JOIN tb_colaborador co ON a.IdAtendente = co.Id
+                         WHERE a.IdAtendente = @idColaborador";
+
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@idColaborador", idColaborador);
+
+            using (MySqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Atendimento atendimento = new Atendimento
+                    {
+                        IdAtendimento = (int)reader["Id"],
+                        CodigoAtendimento = reader["Codigo"].ToString(),
+                        DataAtendimento = Convert.ToDateTime(reader["DataAtendimento"]),
+                        StatusAtendimento = reader["StatusAtendimento"].ToString(),
+                        NomeCidadao = reader["NomeCidadao"].ToString(),
+                        NomeAtendente = reader["NomeAtendente"].ToString(),
+                        DescritivoAtendimento = reader["Descritivo"].ToString()
+                    };
+
+                    atendimentos.Add(atendimento);
+                }
+            }
+        }
+
+        return atendimentos;
+    }
+
+    public Atendimento ObterAtendimentoPorCodigo(string codigoAtendimento)
+    {
+        Atendimento atendimento = null;
+
+        using (MySqlConnection connection = mConn.AbrirConexao())
+        {
+            string query = "SELECT * FROM tb_atendimentos WHERE Codigo = @Codigo";
+            MySqlCommand cmd = new MySqlCommand(query, connection);
+            cmd.Parameters.AddWithValue("@Codigo", codigoAtendimento);
+
+            using (MySqlDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    atendimento = new Atendimento
+                    {
+                        IdAtendimento = (int)reader["Id"],
+                        CodigoAtendimento = reader["Codigo"].ToString(),
+                        DataAtendimento = Convert.ToDateTime(reader["DataAtendimento"]),
+                        StatusAtendimento = reader["StatusAtendimento"].ToString(),
+                        IdCliente = (int)reader["IdCliente"],
+                        IdAtendente = (int)reader["IdAtendente"]
+                        // Adicione outros campos conforme necessário
+                    };
+                }
+            }
+        }
+        return atendimento;
+    }
+
+
+
     public List<Atendimento> GetAtendimentos()
     {
-        using (IDbConnection dbConnection = mConn.AbrirConexao())
+        List<Atendimento> atendimentos = new List<Atendimento>();
+
+        using (MySqlConnection connection = mConn.AbrirConexao())
         {
-            string query = "SELECT Id, Codigo FROM tb_atendimentos";
-            return dbConnection.Query<Atendimento>(query).AsList();
+            string query = "SELECT Id, Codigo, DataAtendimento, StatusAtendimento, IdCliente, IdAtendente, Descritivo " +
+                           "FROM tb_atendimentos";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, connection))
+            {
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Atendimento atendimento = new Atendimento
+                        {
+                            IdAtendimento = (int)reader["Id"],
+                            CodigoAtendimento = reader["Codigo"].ToString(),
+                            DataAtendimento = Convert.ToDateTime(reader["DataAtendimento"]),
+                            StatusAtendimento = reader["StatusAtendimento"].ToString(),
+                            IdCliente = reader["IdCliente"] != DBNull.Value ? (int)reader["IdCliente"] : (int?)null,
+                            IdAtendente = reader["IdAtendente"] != DBNull.Value ? (int)reader["IdAtendente"] : (int?)null,
+                            DescritivoAtendimento = reader["Descritivo"] != DBNull.Value ? reader["Descritivo"].ToString() : string.Empty
+                        };
+
+                        atendimentos.Add(atendimento);
+                    }
+                }
+            }
         }
+        return atendimentos;
     }
 }
