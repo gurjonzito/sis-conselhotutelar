@@ -89,6 +89,12 @@ namespace UI
             frmCadFamilia.ShowDialog();
         }
 
+        private void toolStripViewAtend_Click(object sender, EventArgs e)
+        {
+            UI.frmVerAtendimentos frmVerAtendimentos = new UI.frmVerAtendimentos();
+            frmVerAtendimentos.ShowDialog();
+        }
+
         private void toolStripSair_Click(object sender, EventArgs e)
         {
             // Esconder a tela principal

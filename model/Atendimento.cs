@@ -6,4 +6,6 @@
     public string StatusAtendimento { get; set; }
     public int? IdCliente { get; set; }
     public int? IdAtendente { get; set; }
+    public string NomeCidadao { get; set; }
+    public string NomeAtendente { get; set; }
 }

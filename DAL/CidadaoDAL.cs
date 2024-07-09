@@ -64,15 +64,6 @@ namespace DAL
             }
         }
 
-        public Cidadao ObterCidadao(int idCidadao)
-        {
-            using (IDbConnection dbConnection = mConn.AbrirConexao())
-            {
-                string query = "SELECT * FROM tb_clientes WHERE Id = @IdCidadao";
-                return dbConnection.QueryFirstOrDefault<Cidadao>(query, new { idCidadao });
-            }
-        }
-
         public int ObterIdFamiliaPorNome(string nomeFamilia)
         {
             int idFamilia = 0;

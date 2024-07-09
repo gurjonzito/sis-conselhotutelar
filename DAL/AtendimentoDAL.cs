@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
+using Dapper;
 using DAL;
 using model;
+using System.Data;
 
 public class AtendimentoDAL
 {
     ConexaoDB mConn = new ConexaoDB();
+    string sql;
+    MySqlCommand cmd;
 
     public bool InserirAtendimento(Atendimento atendimento)
     {
@@ -168,5 +172,49 @@ public class AtendimentoDAL
         }
 
         return atendimentos;
+    }
+
+    public List<Atendimento> GetAtendimentosComNomes()
+    {
+        List<Atendimento> atendimentos = new List<Atendimento>();
+
+        using (MySqlConnection connection = mConn.AbrirConexao())
+        {
+            string query = "SELECT a.Id, a.Codigo, a.DataAtendimento, a.StatusAtendimento, c.Nome AS NomeCidadao, co.Nome AS NomeAtendente " +
+                           "FROM tb_atendimentos a " +
+                           "LEFT JOIN tb_clientes c ON a.IdCliente = c.Id " +
+                           "LEFT JOIN tb_colaborador co ON a.IdAtendente = co.Id";
+
+            using (MySqlCommand cmd = new MySqlCommand(query, connection))
+            {
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Atendimento atendimento = new Atendimento
+                        {
+                            IdAtendimento = (int)reader["Id"],
+                            CodigoAtendimento = reader["Codigo"].ToString(),
+                            DataAtendimento = Convert.ToDateTime(reader["DataAtendimento"]),
+                            StatusAtendimento = reader["StatusAtendimento"].ToString(),
+                            NomeCidadao = reader["NomeCidadao"].ToString(),
+                            NomeAtendente = reader["NomeAtendente"].ToString()
+                        };
+
+                        atendimentos.Add(atendimento);
+                    }
+                }
+            }
+        }
+        return atendimentos;
+    }
+
+    public List<Atendimento> GetAtendimentos()
+    {
+        using (IDbConnection dbConnection = mConn.AbrirConexao())
+        {
+            string query = "SELECT Id, Codigo FROM tb_atendimentos";
+            return dbConnection.Query<Atendimento>(query).AsList();
+        }
     }
 }

@@ -1,4 +1,7 @@
-﻿public class AtendimentoBLL
+﻿using DAL;
+using model;
+
+public class AtendimentoBLL
 {
     private AtendimentoDAL atendimentoDAL;
 
@@ -33,6 +36,11 @@
             throw new ArgumentException("O ID do atendente é inválido.");
         }
 
+        if (atendimento.IdCliente <= 0)
+        {
+            throw new ArgumentException("O ID do cidadão é inválido.");
+        }
+
         return atendimentoDAL.InserirAtendimento(atendimento);
     }
 
@@ -62,5 +70,8 @@
         return atendimentoDAL.ObterAtendimentosPorColaborador(idColaborador);
     }
 
-
+    public List<Atendimento> GetAtendimentosComNomes()
+    {
+        return atendimentoDAL.GetAtendimentosComNomes();
+    }
 }

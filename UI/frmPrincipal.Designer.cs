@@ -40,6 +40,7 @@
             toolStripSeparator2 = new ToolStripSeparator();
             toolStripView = new ToolStripDropDownButton();
             toolStripViewCadastros = new ToolStripMenuItem();
+            toolStripViewAtend = new ToolStripMenuItem();
             toolStripSeparator3 = new ToolStripSeparator();
             toolStripRelatorio = new ToolStripDropDownButton();
             toolStripGerar = new ToolStripMenuItem();
@@ -54,6 +55,7 @@
             panelPrincipal = new Panel();
             label1 = new Label();
             label2 = new Label();
+            toolStripSeparator5 = new ToolStripSeparator();
             toolStripPrincipal.SuspendLayout();
             panelPrincipal.SuspendLayout();
             SuspendLayout();
@@ -61,7 +63,7 @@
             // toolStripPrincipal
             // 
             toolStripPrincipal.ImageScalingSize = new Size(20, 20);
-            toolStripPrincipal.Items.AddRange(new ToolStripItem[] { toolStripNovo, toolStripCad, toolStripSeparator2, toolStripView, toolStripSeparator3, toolStripRelatorio, toolStripSair, toolStripSeparator1, toolStripEditar, toolStripSeparator4, toolStripOpcoes });
+            toolStripPrincipal.Items.AddRange(new ToolStripItem[] { toolStripNovo, toolStripSeparator5, toolStripCad, toolStripSeparator2, toolStripView, toolStripSeparator3, toolStripRelatorio, toolStripSair, toolStripSeparator1, toolStripEditar, toolStripSeparator4, toolStripOpcoes });
             toolStripPrincipal.Location = new Point(0, 0);
             toolStripPrincipal.Name = "toolStripPrincipal";
             toolStripPrincipal.Size = new Size(1065, 30);
@@ -125,7 +127,7 @@
             // 
             // toolStripView
             // 
-            toolStripView.DropDownItems.AddRange(new ToolStripItem[] { toolStripViewCadastros });
+            toolStripView.DropDownItems.AddRange(new ToolStripItem[] { toolStripViewCadastros, toolStripViewAtend });
             toolStripView.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             toolStripView.Name = "toolStripView";
             toolStripView.Size = new Size(96, 27);
@@ -134,9 +136,16 @@
             // toolStripViewCadastros
             // 
             toolStripViewCadastros.Name = "toolStripViewCadastros";
-            toolStripViewCadastros.Size = new Size(169, 28);
+            toolStripViewCadastros.Size = new Size(224, 28);
             toolStripViewCadastros.Text = "Cadastros";
             toolStripViewCadastros.Click += toolStripViewCadastros_Click;
+            // 
+            // toolStripViewAtend
+            // 
+            toolStripViewAtend.Name = "toolStripViewAtend";
+            toolStripViewAtend.Size = new Size(224, 28);
+            toolStripViewAtend.Text = "Atendimentos";
+            toolStripViewAtend.Click += toolStripViewAtend_Click;
             // 
             // toolStripSeparator3
             // 
@@ -243,6 +252,11 @@
             label2.TabIndex = 2;
             label2.Text = "Desenvolvido por @gurjonzito";
             // 
+            // toolStripSeparator5
+            // 
+            toolStripSeparator5.Name = "toolStripSeparator5";
+            toolStripSeparator5.Size = new Size(6, 30);
+            // 
             // frmPrincipal
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -257,7 +271,7 @@
             MaximizeBox = false;
             Name = "frmPrincipal";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "frmPrincipal";
+            Text = "Sistema do Conselho Tutelar";
             Load += frmPrincipal_Load;
             toolStripPrincipal.ResumeLayout(false);
             toolStripPrincipal.PerformLayout();
@@ -294,5 +308,7 @@
         private ToolStripMenuItem toolStripCaso;
         private ToolStripMenuItem toolStripCidadao;
         private ToolStripMenuItem toolStripFamilia;
+        private ToolStripMenuItem toolStripViewAtend;
+        private ToolStripSeparator toolStripSeparator5;
     }
 }
