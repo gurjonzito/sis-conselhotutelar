@@ -132,7 +132,7 @@ namespace UI
                                     // Adicione informações principais do atendimento
                                     PdfPTable atendimentoTable = new PdfPTable(4);
                                     atendimentoTable.WidthPercentage = 100;
-                                    atendimentoTable.SpacingBefore = 5f;
+                                    //atendimentoTable.SpacingBefore = 5f;
 
                                     // Adicione cabeçalhos à tabela de atendimentos
                                     atendimentoTable.AddCell(getHeaderCell("Código"));

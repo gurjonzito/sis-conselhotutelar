@@ -256,7 +256,14 @@ public class AtendimentoDAL
 
         using (MySqlConnection connection = mConn.AbrirConexao())
         {
-            string query = "SELECT * FROM tb_atendimentos WHERE Codigo = @Codigo";
+            string query = @"SELECT a.Id, a.Codigo, a.DataAtendimento, a.StatusAtendimento, 
+                                a.IdCliente, a.IdAtendente, c.Nome AS NomeCidadao, co.Nome AS NomeAtendente, a.Descritivo
+                         FROM tb_atendimentos a
+                         LEFT JOIN tb_clientes c ON a.IdCliente = c.Id
+                         LEFT JOIN tb_colaborador co ON a.IdAtendente = co.Id
+                         WHERE a.Codigo = @Codigo";
+
+
             MySqlCommand cmd = new MySqlCommand(query, connection);
             cmd.Parameters.AddWithValue("@Codigo", codigoAtendimento);
 
@@ -271,8 +278,10 @@ public class AtendimentoDAL
                         DataAtendimento = Convert.ToDateTime(reader["DataAtendimento"]),
                         StatusAtendimento = reader["StatusAtendimento"].ToString(),
                         IdCliente = (int)reader["IdCliente"],
-                        IdAtendente = (int)reader["IdAtendente"]
-                        // Adicione outros campos conforme necessário
+                        IdAtendente = (int)reader["IdAtendente"],
+                        NomeAtendente = reader["NomeAtendente"].ToString(),
+                        NomeCidadao = reader["NomeCidadao"].ToString(),
+                        DescritivoAtendimento = reader["Descritivo"].ToString()
                     };
                 }
             }

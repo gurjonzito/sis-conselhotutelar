@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F74AA802-080D-4358-831B-46AA913CC48D}|DAL\\DAL.csproj|c:\\users\\alan miguel\\source\\repos\\sis-conselhotutelar\\dal\\atendimentodal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F74AA802-080D-4358-831B-46AA913CC48D}|DAL\\DAL.csproj|solutionrelative:dal\\atendimentodal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{42FE1DE9-EFA4-42CB-81A6-C85857ECF1AB}|UI\\UI.csproj|c:\\users\\alan miguel\\source\\repos\\sis-conselhotutelar\\ui\\frmgerarrelatorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{42FE1DE9-EFA4-42CB-81A6-C85857ECF1AB}|UI\\UI.csproj|solutionrelative:ui\\frmgerarrelatorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -11,8 +15,8 @@
       "RelativeMoniker": "D:0:0:{61C09EE1-69CC-43F1-BF70-644353C96F87}|BLL\\BLL.csproj|solutionrelative:bll\\atendimentobll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F74AA802-080D-4358-831B-46AA913CC48D}|DAL\\DAL.csproj|c:\\users\\alan miguel\\source\\repos\\sis-conselhotutelar\\dal\\atendimentodal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F74AA802-080D-4358-831B-46AA913CC48D}|DAL\\DAL.csproj|solutionrelative:dal\\atendimentodal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E3A09AC3-A25C-4F68-8A27-5C5159C0D7F9}|model\\model.csproj|c:\\users\\alan miguel\\source\\repos\\sis-conselhotutelar\\model\\atendimento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E3A09AC3-A25C-4F68-8A27-5C5159C0D7F9}|model\\model.csproj|solutionrelative:model\\atendimento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F74AA802-080D-4358-831B-46AA913CC48D}|DAL\\DAL.csproj|c:\\users\\alan miguel\\source\\repos\\sis-conselhotutelar\\dal\\colaboradordal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,7 +31,7 @@
       "RelativeMoniker": "D:0:0:{61C09EE1-69CC-43F1-BF70-644353C96F87}|BLL\\BLL.csproj|solutionrelative:bll\\cidadaobll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{42FE1DE9-EFA4-42CB-81A6-C85857ECF1AB}|UI\\UI.csproj|c:\\users\\alan miguel\\source\\repos\\sis-conselhotutelar\\ui\\frmgerarrelatorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{42FE1DE9-EFA4-42CB-81A6-C85857ECF1AB}|UI\\UI.csproj|C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\ui\\frmgerarrelatorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{42FE1DE9-EFA4-42CB-81A6-C85857ECF1AB}|UI\\UI.csproj|solutionrelative:ui\\frmgerarrelatorio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -37,10 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E3A09AC3-A25C-4F68-8A27-5C5159C0D7F9}|model\\model.csproj|c:\\users\\alan miguel\\source\\repos\\sis-conselhotutelar\\model\\colaborador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E3A09AC3-A25C-4F68-8A27-5C5159C0D7F9}|model\\model.csproj|solutionrelative:model\\colaborador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E3A09AC3-A25C-4F68-8A27-5C5159C0D7F9}|model\\model.csproj|c:\\users\\alan miguel\\source\\repos\\sis-conselhotutelar\\model\\atendimento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E3A09AC3-A25C-4F68-8A27-5C5159C0D7F9}|model\\model.csproj|solutionrelative:model\\atendimento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{42FE1DE9-EFA4-42CB-81A6-C85857ECF1AB}|UI\\UI.csproj|c:\\users\\alan miguel\\source\\repos\\sis-conselhotutelar\\ui\\frmcaduser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -55,11 +55,11 @@
       "RelativeMoniker": "D:0:0:{42FE1DE9-EFA4-42CB-81A6-C85857ECF1AB}|UI\\UI.csproj|solutionrelative:ui\\frmatendimentos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{42FE1DE9-EFA4-42CB-81A6-C85857ECF1AB}|UI\\UI.csproj|c:\\users\\alan miguel\\source\\repos\\sis-conselhotutelar\\ui\\frmatendimentos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{42FE1DE9-EFA4-42CB-81A6-C85857ECF1AB}|UI\\UI.csproj|C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\ui\\frmatendimentos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{42FE1DE9-EFA4-42CB-81A6-C85857ECF1AB}|UI\\UI.csproj|solutionrelative:ui\\frmatendimentos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{42FE1DE9-EFA4-42CB-81A6-C85857ECF1AB}|UI\\UI.csproj|c:\\users\\alan miguel\\source\\repos\\sis-conselhotutelar\\ui\\frmcadcidadao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{42FE1DE9-EFA4-42CB-81A6-C85857ECF1AB}|UI\\UI.csproj|C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\ui\\frmcadcidadao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{42FE1DE9-EFA4-42CB-81A6-C85857ECF1AB}|UI\\UI.csproj|solutionrelative:ui\\frmcadcidadao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -173,43 +173,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AtendimentoBLL.cs",
-              "DocumentMoniker": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\BLL\\AtendimentoBLL.cs",
-              "RelativeDocumentMoniker": "BLL\\AtendimentoBLL.cs",
-              "ToolTip": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\BLL\\AtendimentoBLL.cs",
-              "RelativeToolTip": "BLL\\AtendimentoBLL.cs",
-              "ViewState": "AQIAAFYAAAAAAAAAAAAswHAAAABLAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T18:24:45.443Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AtendimentoDAL.cs",
-              "DocumentMoniker": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\DAL\\AtendimentoDAL.cs",
-              "RelativeDocumentMoniker": "DAL\\AtendimentoDAL.cs",
-              "ToolTip": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\DAL\\AtendimentoDAL.cs",
-              "RelativeToolTip": "DAL\\AtendimentoDAL.cs",
-              "ViewState": "AQIAAPoAAAAAAAAAAAAMwBkBAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T18:26:17.98Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "frmGerarRelatorio.cs",
               "DocumentMoniker": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\UI\\frmGerarRelatorio.cs",
               "RelativeDocumentMoniker": "UI\\frmGerarRelatorio.cs",
-              "ToolTip": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\UI\\frmGerarRelatorio.cs*",
-              "RelativeToolTip": "UI\\frmGerarRelatorio.cs*",
-              "ViewState": "AQIAAEEAAAAAAAAAAAAiwFYAAAA6AAAA",
+              "ToolTip": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\UI\\frmGerarRelatorio.cs",
+              "RelativeToolTip": "UI\\frmGerarRelatorio.cs",
+              "ViewState": "AQIAAEEAAAAAAAAAAAAswFQAAABBAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-07-08T15:38:00.935Z",
               "EditorCaption": ""
@@ -217,19 +191,6 @@
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "CidadaoBLL.cs",
-              "DocumentMoniker": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\BLL\\CidadaoBLL.cs",
-              "RelativeDocumentMoniker": "BLL\\CidadaoBLL.cs",
-              "ToolTip": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\BLL\\CidadaoBLL.cs",
-              "RelativeToolTip": "BLL\\CidadaoBLL.cs",
-              "ViewState": "AQIAADYAAAAAAAAAAAAowEUAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-08T06:21:56.223Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "CidadaoDAL.cs",
               "DocumentMoniker": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\DAL\\CidadaoDAL.cs",
               "RelativeDocumentMoniker": "DAL\\CidadaoDAL.cs",
@@ -237,12 +198,11 @@
               "RelativeToolTip": "DAL\\CidadaoDAL.cs",
               "ViewState": "AQIAAF0AAAAAAAAAAAAowGMAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-08T06:22:39.615Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-08T06:22:39.615Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ColaboradorDAL.cs",
               "DocumentMoniker": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\DAL\\ColaboradorDAL.cs",
               "RelativeDocumentMoniker": "DAL\\ColaboradorDAL.cs",
@@ -250,24 +210,73 @@
               "RelativeToolTip": "DAL\\ColaboradorDAL.cs",
               "ViewState": "AQIAAJIAAAAAAAAAAAAQwGEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-08T06:22:22.792Z",
+              "WhenOpened": "2024-07-08T06:22:22.792Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Atendimento.cs",
+              "DocumentMoniker": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\model\\Atendimento.cs",
+              "RelativeDocumentMoniker": "model\\Atendimento.cs",
+              "ToolTip": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\model\\Atendimento.cs",
+              "RelativeToolTip": "model\\Atendimento.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAYAAAAZAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T18:08:03.24Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AtendimentoBLL.cs",
+              "DocumentMoniker": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\BLL\\AtendimentoBLL.cs",
+              "RelativeDocumentMoniker": "BLL\\AtendimentoBLL.cs",
+              "ToolTip": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\BLL\\AtendimentoBLL.cs",
+              "RelativeToolTip": "BLL\\AtendimentoBLL.cs",
+              "ViewState": "AQIAAGAAAAAAAAAAAAAgwG0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T18:24:45.443Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AtendimentoDAL.cs",
+              "DocumentMoniker": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\DAL\\AtendimentoDAL.cs",
+              "RelativeDocumentMoniker": "DAL\\AtendimentoDAL.cs",
+              "ToolTip": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\DAL\\AtendimentoDAL.cs",
+              "RelativeToolTip": "DAL\\AtendimentoDAL.cs",
+              "ViewState": "AQIAAPwAAAAAAAAAAIA0wAgBAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-03T18:26:17.98Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "CidadaoBLL.cs",
+              "DocumentMoniker": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\BLL\\CidadaoBLL.cs",
+              "RelativeDocumentMoniker": "BLL\\CidadaoBLL.cs",
+              "ToolTip": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\BLL\\CidadaoBLL.cs",
+              "RelativeToolTip": "BLL\\CidadaoBLL.cs",
+              "ViewState": "AQIAADYAAAAAAAAAAAAowEUAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-08T06:21:56.223Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "frmGerarRelatorio.cs [Projeto]",
               "DocumentMoniker": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\UI\\frmGerarRelatorio.cs",
               "RelativeDocumentMoniker": "UI\\frmGerarRelatorio.cs",
               "ToolTip": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\UI\\frmGerarRelatorio.cs [Projeto]*",
               "RelativeToolTip": "UI\\frmGerarRelatorio.cs [Projeto]*",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-09T17:31:14.762Z",
-              "EditorCaption": " [Projeto]"
+              "WhenOpened": "2024-07-09T17:31:14.762Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "ColaboradorBLL.cs",
               "DocumentMoniker": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\BLL\\ColaboradorBLL.cs",
               "RelativeDocumentMoniker": "BLL\\ColaboradorBLL.cs",
@@ -275,12 +284,11 @@
               "RelativeToolTip": "BLL\\ColaboradorBLL.cs",
               "ViewState": "AQIAAEAAAAAAAAAAAAD4v1AAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-08T07:10:44.273Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-08T07:10:44.273Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Colaborador.cs",
               "DocumentMoniker": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\model\\Colaborador.cs",
               "RelativeDocumentMoniker": "model\\Colaborador.cs",
@@ -288,21 +296,7 @@
               "RelativeToolTip": "model\\Colaborador.cs",
               "ViewState": "AQIAAAMAAAAAAAAAAAAAAA0AAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T14:29:48.263Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Atendimento.cs",
-              "DocumentMoniker": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\model\\Atendimento.cs",
-              "RelativeDocumentMoniker": "model\\Atendimento.cs",
-              "ToolTip": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\model\\Atendimento.cs",
-              "RelativeToolTip": "model\\Atendimento.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-03T18:08:03.24Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-03T14:29:48.263Z"
             },
             {
               "$type": "Document",
@@ -326,8 +320,7 @@
               "ToolTip": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\UI\\frmCadUser.cs [Projeto]",
               "RelativeToolTip": "UI\\frmCadUser.cs [Projeto]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-02T15:53:01.63Z",
-              "EditorCaption": " [Projeto]"
+              "WhenOpened": "2024-07-02T15:53:01.63Z"
             },
             {
               "$type": "Document",
@@ -351,8 +344,7 @@
               "ToolTip": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\UI\\frmAtendimentos.cs [Projeto]",
               "RelativeToolTip": "UI\\frmAtendimentos.cs [Projeto]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-09T16:08:48.084Z",
-              "EditorCaption": " [Projeto]"
+              "WhenOpened": "2024-07-09T16:08:48.084Z"
             },
             {
               "$type": "Document",
@@ -363,8 +355,7 @@
               "ToolTip": "C:\\Users\\Alan Miguel\\source\\repos\\sis-conselhotutelar\\UI\\frmCadCidadao.cs [Projeto]",
               "RelativeToolTip": "UI\\frmCadCidadao.cs [Projeto]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-09T17:18:17.864Z",
-              "EditorCaption": " [Projeto]"
+              "WhenOpened": "2024-07-09T17:18:17.864Z"
             },
             {
               "$type": "Document",
@@ -376,8 +367,7 @@
               "RelativeToolTip": "UI\\frmCadCidadao.cs",
               "ViewState": "AQIAABsAAAAAAAAAAAAYwDwAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-08T14:27:52.433Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-08T14:27:52.433Z"
             },
             {
               "$type": "Document",
@@ -389,8 +379,7 @@
               "RelativeToolTip": "UI\\frmVerAtendimentos.cs",
               "ViewState": "AQIAAFIAAAAAAAAAAAAkwGUAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-09T06:10:10.12Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-09T06:10:10.12Z"
             },
             {
               "$type": "Document",
